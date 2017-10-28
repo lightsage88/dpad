@@ -64,11 +64,22 @@ function selectGame(searchTerm, json_callback) {
 
 
 function collectToken(data) {
+
 	console.log('running collectToken...');
 	console.log(data);
-	console.log(data.results[0]);
+	let firstTitle = data.results[0];
+	console.log(firstTitle);
+	let urlString = firstTitle.api_detail_url;
+	console.log('This is the thing we will cut the code from: ' + urlString);
+	console.log(urlString.length);
+	let firstTake = urlString.slice(35);
+	console.log(firstTake);
+	let gameToken = firstTake.slice(0, 9);
+	console.log(gameToken);
+	
 	
 }
+
 
 
 $(submitFormGetSearchTerm);
