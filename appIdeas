@@ -1,0 +1,15 @@
+app ideas//
+
+
+Differentiate games for a player based on who directed/designed a video game
+//when user says they like 'Metal Gear Solid', then it will chronologically list games directed by Hideo Kojima, the director, throughout his entire career. Games will be placed with their meta-critic rating, and what system they are for.
+//suggestions for similar games will be posted too.
+
+//The idea is to really push forth the idea of thinking of games as an artistic medium by constructing an app that can act as a resource for people to engage with the medium, whether they are newcomers or not, in a way that can put gaming's best foot forward.
+//so many websites have lists of game reviews by score or by date, but don't present game listings in a context that focuses on each entry as part of a creative directors ouevre!
+
+
+//wikipedia and metacritic apis are likely needed
+
+//my plan is to use Wikipedia first and search for a director or group of directors
+//Metacritic doesn't seem to have the data I want, and I think it may be a bit much to incorporate a rating on the first go around...I'll try but if things get too hairy, then I will just keep things simple with the Wikipedia API.
