@@ -72,10 +72,10 @@ function collectToken(data) {
 	let urlString = firstTitle.api_detail_url;
 	console.log('This is the thing we will cut the code from: ' + urlString);
 	console.log(urlString.length);
-	let firstTake = urlString.slice(35);
-	console.log(firstTake);
-	let gameToken = firstTake.slice(0, 9);
+	let gameToken = urlString.slice(35,45);
 	console.log(gameToken);
+	// let gameToken = firstTake.slice(0, 9);
+	// console.log(gameToken);
 	
 	
 }
