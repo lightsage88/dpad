@@ -103,11 +103,11 @@ function getDetails(data) {
 	let developer = details[0].developers[0].name;
 	let devTag = details[0].developers[0].api_detail_url;
 	let devCode = devTag.slice(38,47);
-	// let gameConsole = details[0].platforms[0].name;
-	// 		if(details[0].platforms[1].name) {
-	// 			let gameConsole2 = details[0].platforms[1].name;
-	// 			console.log(gameConsole2);
-	// 		}
+	let gameConsole = details[0].platforms[0].name;
+			if(details[0].platforms[1].name) {
+				let gameConsole2 = details[0].platforms[1].name;
+				console.log(gameConsole2);
+			}
 
 	let boxArt = details[0].image.thumb_url;
 	const enteredGameDetails = [gameName, releaseYear, developer, devCode, gameConsole, boxArt];
@@ -123,7 +123,7 @@ function displaySearchGame(enteredGameDetails){
 	$('.searchGameDetails').find('.gameName').html('Title: '+ enteredGameDetails[0]);
 	$('.searchGameDetails').find('.releaseYear').html('Release Year: ' + enteredGameDetails[1]);
 	$('.searchGameDetails').find('.developer').html('Developer: ' + enteredGameDetails[2]);
-	// $('.searchGameDetails').find('.gameConsole').html('Console: ' + enteredGameDetails[4]);
+	$('.searchGameDetails').find('.gameConsole').html('Console: ' + enteredGameDetails[4]);
 
 
 
