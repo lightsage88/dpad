@@ -74,12 +74,38 @@ function collectToken(data) {
 	console.log(urlString.length);
 	let gameToken = urlString.slice(35,45);
 	console.log(gameToken);
+	useToken(gameToken);
 	// let gameToken = firstTake.slice(0, 9);
 	// console.log(gameToken);
 	
 	
 }
 
+function useToken(gameToken) {
+	console.log(`running useToken...`);
+	$.ajax({
+		type: 'get',
+		url: `https://www.giantbomb.com/api/game/${gameToken}/`,
+		data: {
+			api_key: gBApiKey,
+			format: 'jsonp',
+			json_callback: 'getDetails',
+			field_list: 'name,original_release_date,image,developers,reviews,platforms'
+		},
+		dataType: 'jsonp'
+	});
+}
+
+function getDetails(data) {
+	console.log(`running getDetails...`);
+	console.log(data);
+	console.log(typeof data);
+	let details = jQuery.makeArray(data.results);
+	console.log(details);
+	console.log(details[0].developers[0].api_detail_url);
+	console.log(details[0].developers[0].name);
+
+}
 
 
 $(submitFormGetSearchTerm);

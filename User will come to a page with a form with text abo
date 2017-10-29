@@ -43,20 +43,23 @@ http://www.giantbomb.com/api/[RESOURCE-TYPE]/[RESOURCE-ID]/?api_key=[YOUR-KEY]&f
 http://www.giantbomb.com/api/game/3030-46584/?api_key=xxx&format=json
 
 we want our field_list to include:
-name // will give a string with the title of the game (e.g. 'Star Fox Zero')
-original_release_date  //We can get the date and strip un-needed chars from it
-image // We can get thumb_url for our pics :)
-developers // get the first one for this game it is PlatinumGames
+*name // will give a string with the title of the game (e.g. 'Star Fox Zero')
+
+*original_release_date  //We can get the date and strip un-needed chars from it
+
+*image // We can get thumb_url for our pics :)
+
+*developers // get the first one for this game it is PlatinumGames
 
 		get api_detail_url, we will strip the last character and ones before the number
 		companyNumber = #;
 
-reviews // get site_detail_url which is a string that is an address, we will strip the last character and everything before the special number we want *****we will save this for later
+*reviews // get site_detail_url which is a string that is an address, we will strip the last character and everything before the special number we want *****we will save this for later
 
 		get api_detail_url, we will strip the last character and the ones before the number
 		reviewNumber = #
 
-platforms // we get the key of 'name'...as that will yield "Wii U"
+*platforms // we get the key of 'name'...as that will yield "Wii U"
 
 
 
