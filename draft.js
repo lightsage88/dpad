@@ -25,6 +25,9 @@ function submitFormGetSearchTerm(){
 		const searchTerm = searchBar.val();
 		searchBar.val('');
 		selectGame(searchTerm, collectToken);
+
+		$('.js-search-result').prop('hidden', false);
+
 	})
 //listens for 'submit' and reads the textual form input  
 //it holds onto this and calls it [searchTerm] 
@@ -40,13 +43,7 @@ function selectGame(searchTerm, json_callback) {
 			resource: 'games',
 			};
 	console.log(search);
-		// $.ajax ({
-		// url: `https://www.giantbomb.com/api/search/?api_key=${search.api_key}&query=${search.query}&resource=${search.resource}`,
-	 //    type: 'GET',
-	 //    dataType: 'jsonp',
-	 //    json_callback: collectToken,
-	 //    crossDomain: true,
-	 //  });
+		
 	 $.ajax({
 	 	type: 'get',
 	 	url: 'https://www.giantbomb.com/api/search/',
@@ -74,11 +71,7 @@ function collectToken(data) {
 	console.log(urlString.length);
 	let gameToken = urlString.slice(35,45);
 	console.log(gameToken);
-	useToken(gameToken);
-	// let gameToken = firstTake.slice(0, 9);
-	// console.log(gameToken);
-	
-	
+	useToken(gameToken);	
 }
 
 function useToken(gameToken) {
@@ -90,22 +83,52 @@ function useToken(gameToken) {
 			api_key: gBApiKey,
 			format: 'jsonp',
 			json_callback: 'getDetails',
-			field_list: 'name,original_release_date,image,developers,reviews,platforms'
+			field_list: 'name,original_release_date,image,developers,platforms'
 		},
 		dataType: 'jsonp'
 	});
+	
 }
 
 function getDetails(data) {
 	console.log(`running getDetails...`);
-	console.log(data);
-	console.log(typeof data);
-	let details = jQuery.makeArray(data.results);
+		let details = jQuery.makeArray(data.results);
 	console.log(details);
-	console.log(details[0].developers[0].api_detail_url);
-	console.log(details[0].developers[0].name);
+	let gameName = details[0].name;
+	
+	let fullReleaseDate = details[0].original_release_date;
+	let releaseYear = fullReleaseDate.slice(0,4);
+	
+	// let reviewPt1 = details[0].reviews[0];
+	// let reviewCode = reviewPt1.api_detail_url.slice(37, 45);
+	// console.log(reviewCode.length);
+
+	let developer = details[0].developers[0].name;
+	let devTag = details[0].developers[0].api_detail_url;
+	let devCode = devTag.slice(38,47);
+	let gameConsole = details[0].platforms[0].name;
+	let boxArt = details[0].image.thumb_url;
+	const enteredGameDetails = [gameName, releaseYear, developer, devCode, gameConsole, boxArt];
+	console.log (enteredGameDetails);
+
+	displaySearchGame(enteredGameDetails);
+	
+}
+
+function displaySearchGame(enteredGameDetails){
+// 	//takes enteredGameDetails and displays the details about it in the dom
+	$('.js-search-result').find('img').attr('src', enteredGameDetails[5]);
+	$('.searchGameDetails').find('.gameName').html('Title: '+ enteredGameDetails[0]);
+	$('.searchGameDetails').find('.releaseYear').html('Release Year: ' + enteredGameDetails[1]);
+	$('.searchGameDetails').find('.developer').html('Developer: ' + enteredGameDetails[2]);
+	$('.searchGameDetails').find('.gameConsole').html('Console: ' + enteredGameDetails[4]);
+
+
 
 }
+
+// function display
+
 
 
 $(submitFormGetSearchTerm);
