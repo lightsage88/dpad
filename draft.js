@@ -92,7 +92,7 @@ function getDetails(data) {
 	let details = jQuery.makeArray(data.results);
 	console.log('These are the details:' + details);
 	cookSearchGame(details);
-	cookQueryGames(details);
+	researchQueryGames(details);
 
 }
 
@@ -111,27 +111,11 @@ function cookSearchGame(details){
 	//for zeroing in on Developers
 }
 
-function cookQueryGames(details){
-	console.log('cooking up games made by the same developer...');
-	let devTag = details[0].developers[0].api_detail_url;
-	let devCode = devTag.slice(38,47);
-	console.log('This is what we will use to find the developers profile: ' + devCode);
-
-
-
-
-}
-
 function constructSearchGameObject(title, image, releaseYear, devTeam, gameConsole) {
-
 	let game0 = new videoGame(title, image, releaseYear, devTeam, gameConsole);
 	console.log(game0);
 	displaySearchGame(game0);
 }
-
-	
-	
-
 
 function displaySearchGame(gameObject) {
 	console.log('filling shit in');
@@ -151,6 +135,33 @@ function displaySearchGame(gameObject) {
 	$('.searchGameDetails').find('.gameConsole').html('Console: ' + gameObject.console);
 }
 
+
+
+function researchQueryGames(details){
+	console.log('cooking up games made by the same developer...');
+	let devTag = details[0].developers[0].api_detail_url;
+	let devCode = devTag.slice(38,46);
+	console.log('This is what we will use to find the developers profile: ' + devCode);
+ 	
+	$.ajax({
+		type: 'get',
+		url: `https://www.giantbomb.com/api/company/${devCode}/`,
+		data: {
+			api_key: gBApiKey,
+			format: 'jsonp',
+			json_callback: 'sortDevelopedGames',
+			field_list: 'developed_games'
+		},
+		dataType: 'jsonp'
+	});
+}
+
+function sortDevelopedGames(data) {
+	let details = jQuery.makeArray(data.results);
+	console.log(details);
+	console.log('behold: ' + details[0].developed_games);
+	
+}
 
 
 
