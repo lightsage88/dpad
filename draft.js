@@ -1,21 +1,20 @@
 
 const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
-// const gBSearch = 'http://www.giantbomb.com/api/search/?query='+ searchTerm +
-// 				'api_key='+ gBApiKey +'&format=json&query=&resource=games';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
 
-// const gBQuery = 'http://www.giantbomb.com/api/[RESOURCE-TYPE]/'+
-// 				'[RESOURCE-ID]/?api_key=[YOUR-KEY]&format=[RESPONSE-DATA-FORMAT]'+
-// 				'&field_list=[COMMA-SEPARATED-LIST-OF-RESOURCE-FIELDS]';
 
-//!!!!! gameToken is the giantBomb digit for each game you search for successfully
+//OUR OBJECT CONSTRUCTOR
+function videoGame(title, image, year, developer, console){
+	this.title = title;
+	this.image = image;
+	this.year = year;
+	this.developer = developer;
+	this.console = [console];
+//	this.reviewScore = reviewScore;
+}
 
-// const gBQuery = 'http://www.giantbomb.com/api/game/'+
-// 				gameToken+'/?api_key='+gBApiKey+'&format=json'+
-// 				'&field_list='+queryString;
 
-const queryString = ['name', 'game', 'original_release_date',
-					'image','developers', 'reviews', 'platforms'];
+
 
 function submitFormGetSearchTerm(){
 	$('.js-search-form').submit(function(event) {
@@ -29,12 +28,8 @@ function submitFormGetSearchTerm(){
 		$('.js-search-result').prop('hidden', false);
 
 	})
-//listens for 'submit' and reads the textual form input  
-//it holds onto this and calls it [searchTerm] 
-//it calls for the getDataFromApi function next and passes it to
-//[searchTerm] and a callback function that will displayGBData
 }	
-							//this callback will be passed to get Json
+
 function selectGame(searchTerm, json_callback) {
 	console.log('running selectGame...');
 		const search = {
@@ -90,46 +85,72 @@ function useToken(gameToken) {
 	
 }
 
+//title, image, year, developer, console, reviewScore
+
 function getDetails(data) {
 	console.log(`running getDetails...`);
-		let details = jQuery.makeArray(data.results);
-	console.log(details);
-	let gameName = details[0].name;
-	
-	let fullReleaseDate = details[0].original_release_date;
-	let releaseYear = fullReleaseDate.slice(0,4);
-	
+	let details = jQuery.makeArray(data.results);
+	console.log('These are the details:' + details);
+	cookSearchGame(details);
+	cookQueryGames(details);
 
-	let developer = details[0].developers[0].name;
+}
+
+function cookSearchGame(details){
+	console.log('cooking up the game you searched for...');
+	let title = details[0].name;
+		let image = details[0].image.thumb_url;
+				let fullReleaseDate = details[0].original_release_date;
+		let releaseYear = fullReleaseDate.slice(0,4);
+		let devTeam = details[0].developers[0].name;
+		let gameConsole = [];
+				for (let i=0; i< details[0].platforms.length; i++) {
+						gameConsole.push(' '+ details[0].platforms[i].name);
+				}
+	constructSearchGameObject(title, image, releaseYear, devTeam, gameConsole);
+	//for zeroing in on Developers
+}
+
+function cookQueryGames(details){
+	console.log('cooking up games made by the same developer...');
 	let devTag = details[0].developers[0].api_detail_url;
 	let devCode = devTag.slice(38,47);
-	let gameConsole = details[0].platforms[0].name;
-			if(details[0].platforms[1].name) {
-				let gameConsole2 = details[0].platforms[1].name;
-				console.log(gameConsole2);
-			}
+	console.log('This is what we will use to find the developers profile: ' + devCode);
 
-	let boxArt = details[0].image.thumb_url;
-	const enteredGameDetails = [gameName, releaseYear, developer, devCode, gameConsole, boxArt];
-	console.log (enteredGameDetails);
 
-	displaySearchGame(enteredGameDetails);
+
+
+}
+
+function constructSearchGameObject(title, image, releaseYear, devTeam, gameConsole) {
+
+	let game0 = new videoGame(title, image, releaseYear, devTeam, gameConsole);
+	console.log(game0);
+	displaySearchGame(game0);
+}
+
 	
+	
+
+
+function displaySearchGame(gameObject) {
+	console.log('filling shit in');
+	$('main').html("<section class='js-search-result'>"+
+			"<img src= ''>"+
+			"<ul class='searchGameDetails'>"+
+			"	<li class='gameName'></li>" +
+			"	<li class='releaseYear'></li>"+
+			"	<li class='developer'></li>"+
+			"	<li class='gameConsole'></li>"+
+			"</ul>"+
+		"</section>");
+	$('.js-search-result').find('img').attr('src', gameObject.image);
+	$('.searchGameDetails').find('.gameName').html('Title: '+ gameObject.title);
+	$('.searchGameDetails').find('.releaseYear').html('Release Year: ' + gameObject.year);
+ 	$('.searchGameDetails').find('.developer').html('Developer: ' + gameObject.developer);
+	$('.searchGameDetails').find('.gameConsole').html('Console: ' + gameObject.console);
 }
 
-function displaySearchGame(enteredGameDetails){
-// 	//takes enteredGameDetails and displays the details about it in the dom
-	$('.js-search-result').find('img').attr('src', enteredGameDetails[5]);
-	$('.searchGameDetails').find('.gameName').html('Title: '+ enteredGameDetails[0]);
-	$('.searchGameDetails').find('.releaseYear').html('Release Year: ' + enteredGameDetails[1]);
-	$('.searchGameDetails').find('.developer').html('Developer: ' + enteredGameDetails[2]);
-	$('.searchGameDetails').find('.gameConsole').html('Console: ' + enteredGameDetails[4]);
-
-
-
-}
-
-// function display
 
 
 
