@@ -1,7 +1,8 @@
 
 const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
-
+const IGBDKEY = '4a6d0c5e69a9b371f76295af4af727a3';
+const IGDBENDPOINT = 'https://api-2445582011268.apicast.io/';
 
 //OUR OBJECT CONSTRUCTOR
 function videoGame(title, image, year, developer, console){
@@ -20,6 +21,7 @@ function submitFormGetSearchTerm(){
 	$('.js-search-form').submit(function(event) {
 		console.log('running submitFormGetSearchTerm...');
 		event.preventDefault();
+		$('.js-search-result').empty();
 		const searchBar = $(this).find('.js-search');
 		const searchTerm = searchBar.val();
 		searchBar.val('');
@@ -64,7 +66,8 @@ function collectToken(data) {
 	let urlString = firstTitle.api_detail_url;
 	console.log('This is the thing we will cut the code from: ' + urlString);
 	console.log(urlString.length);
-	let gameToken = urlString.slice(35,45);
+	let gameToken = urlString.slice(35).replace('/', '');
+
 	console.log(gameToken);
 	useToken(gameToken);	
 }
@@ -107,19 +110,19 @@ function cookSearchGame(details){
 				for (let i=0; i< details[0].platforms.length; i++) {
 						gameConsole.push(' '+ details[0].platforms[i].name);
 				}
-	constructSearchGameObject(title, image, releaseYear, devTeam, gameConsole);
+	constructGameObject(title, image, releaseYear, devTeam, gameConsole);
 	//for zeroing in on Developers
 }
 
-function constructSearchGameObject(title, image, releaseYear, devTeam, gameConsole) {
-	let game0 = new videoGame(title, image, releaseYear, devTeam, gameConsole);
-	console.log(game0);
-	displaySearchGame(game0);
+function constructGameObject(title, image, releaseYear, devTeam, gameConsole) {
+	let game = new videoGame(title, image, releaseYear, devTeam, gameConsole);
+	console.log(game);
+	displaySearchGame(game);
 }
 
 function displaySearchGame(gameObject) {
 	console.log('filling shit in');
-	$('main').html("<section class='js-search-result'>"+
+	$('main').append("<section class='js-search-result'>"+
 			"<img src= ''>"+
 			"<ul class='searchGameDetails'>"+
 			"	<li class='gameName'></li>" +
@@ -140,7 +143,8 @@ function displaySearchGame(gameObject) {
 function researchQueryGames(details){
 	console.log('cooking up games made by the same developer...');
 	let devTag = details[0].developers[0].api_detail_url;
-	let devCode = devTag.slice(38,46);
+	console.log('this is the devTag from which we will do the cutting: ' + devTag);
+	let devCode = devTag.slice(38).replace('/','');
 	console.log('This is what we will use to find the developers profile: ' + devCode);
  	
 	$.ajax({
@@ -156,13 +160,59 @@ function researchQueryGames(details){
 	});
 }
 
+
+
 function sortDevelopedGames(data) {
-	let details = jQuery.makeArray(data.results);
-	console.log(details);
-	console.log('behold: ' + details[0].developed_games);
+	console.log(data);
+	let otherWorks = jQuery.makeArray(data.results.developed_games);
+	console.log(otherWorks);
+	getTokensFromDevelopedGames(otherWorks);
 	
+}
+//otherworks is an array
+function getTokensFromDevelopedGames(otherWorks) {
+console.log(otherWorks[0].api_detail_url + ' just a taste of what we need');
+let coinPurse = [];
+for(let i = 0; i<=otherWorks.length -1 ; i++) {
+	coinPurse.push(otherWorks[i].api_detail_url.slice(35).replace('/',''));
+}
+console.log(coinPurse);
+gatherInfoOnOtherGames(coinPurse);
+}
+
+function gatherInfoOnOtherGames(coinPurse) {
+console.log(coinPurse);
+	for(let i = 0; i<=coinPurse.length -1; i++){
+		let idCard = coinPurse[i]
+				$.ajax({
+					type:'get',
+					url: `https://www.giantbomb.com/api/game/${idCard}`,
+					data: {
+						api_key: gBApiKey,
+						format: 'jsonp',
+						json_callback: 'constructGameObject',
+						field_list: 'name, original_release_date, image, developers, platforms'
+					},
+					dataType: 'jsonp'
+				});
+	}
 }
 
 
+// function useToken(gameToken) {
+// 	console.log(`running useToken...`);
+// 	$.ajax({
+// 		type: 'get',
+// 		url: `https://www.giantbomb.com/api/game/${gameToken}/`,
+// 		data: {
+// 			api_key: gBApiKey,
+// 			format: 'jsonp',
+// 			json_callback: 'getDetails',
+// 			field_list: 'name,original_release_date,image,developers,platforms'
+// 		},
+// 		dataType: 'jsonp'
+// 	});
+	
+// }
 
 $(submitFormGetSearchTerm);
