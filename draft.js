@@ -3,8 +3,8 @@ const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
 const IGBDKEY = '4a6d0c5e69a9b371f76295af4af727a3';
 const IGDBENDPOINT = 'https://api-2445582011268.apicast.io/';
-
-//OUR OBJECT CONSTRUCTOR
+let gameLibrary = [];
+//OUR videoGame OBJECT CONSTRUCTOR
 function videoGame(title, image, year, developer, console){
 	this.title = title;
 	this.image = image;
@@ -13,9 +13,6 @@ function videoGame(title, image, year, developer, console){
 	this.console = [console];
 //	this.reviewScore = reviewScore;
 }
-
-
-
 
 function submitFormGetSearchTerm(){
 	$('.js-search-form').submit(function(event) {
@@ -26,9 +23,6 @@ function submitFormGetSearchTerm(){
 		const searchTerm = searchBar.val();
 		searchBar.val('');
 		selectGame(searchTerm, collectToken);
-
-		$('.js-search-result').prop('hidden', false);
-
 	})
 }	
 
@@ -69,7 +63,8 @@ function collectToken(data) {
 	let gameToken = urlString.slice(35).replace('/', '');
 
 	console.log(gameToken);
-	useToken(gameToken);	
+	useToken(gameToken);
+	return gameToken;	
 }
 
 function useToken(gameToken) {
@@ -88,19 +83,20 @@ function useToken(gameToken) {
 	
 }
 
-//title, image, year, developer, console, reviewScore
-
 function getDetails(data) {
 	console.log(`running getDetails...`);
+	console.log(data);
+	cookSearchGame(data);
 	let details = jQuery.makeArray(data.results);
 	console.log('These are the details:' + details);
-	cookSearchGame(details);
 	researchQueryGames(details);
 
 }
 
-function cookSearchGame(details){
+function cookSearchGame(data){
 	console.log('cooking up the game you searched for...');
+	let details = jQuery.makeArray(data.results);
+	console.log(details);
 	let title = details[0].name;
 		let image = details[0].image.thumb_url;
 				let fullReleaseDate = details[0].original_release_date;
@@ -111,32 +107,30 @@ function cookSearchGame(details){
 						gameConsole.push(' '+ details[0].platforms[i].name);
 				}
 	constructGameObject(title, image, releaseYear, devTeam, gameConsole);
-	//for zeroing in on Developers
 }
 
 function constructGameObject(title, image, releaseYear, devTeam, gameConsole) {
 	let game = new videoGame(title, image, releaseYear, devTeam, gameConsole);
 	console.log(game);
-	displaySearchGame(game);
+	gameLibrary.push(game);
+	displayVideoGame(game);
+	console.log(gameLibrary);
+	
+	
+}
+///arrays don't
+
+function displayVideoGame(game) {
+	$('.games').append(`
+		<img src=${game.image}>
+		<ul class='game'>
+			<li class='title'>${game.title}</li>
+			<li class='year'>${game.year}</li>
+			<li class='developer'>${game.developer}</li>
+			<li class='console'>${game.console}</li>
+		</ul>`);
 }
 
-function displaySearchGame(gameObject) {
-	console.log('filling shit in');
-	$('main').append("<section class='js-search-result'>"+
-			"<img src= ''>"+
-			"<ul class='searchGameDetails'>"+
-			"	<li class='gameName'></li>" +
-			"	<li class='releaseYear'></li>"+
-			"	<li class='developer'></li>"+
-			"	<li class='gameConsole'></li>"+
-			"</ul>"+
-		"</section>");
-	$('.js-search-result').find('img').attr('src', gameObject.image);
-	$('.searchGameDetails').find('.gameName').html('Title: '+ gameObject.title);
-	$('.searchGameDetails').find('.releaseYear').html('Release Year: ' + gameObject.year);
- 	$('.searchGameDetails').find('.developer').html('Developer: ' + gameObject.developer);
-	$('.searchGameDetails').find('.gameConsole').html('Console: ' + gameObject.console);
-}
 
 
 
@@ -162,10 +156,15 @@ function researchQueryGames(details){
 
 
 
-function sortDevelopedGames(data) {
+function sortDevelopedGames(data, gameToken) {
 	console.log(data);
+	console.log(gameToken);
+	console.log('see the token');
 	let otherWorks = jQuery.makeArray(data.results.developed_games);
+	console.log('behold the other games, these nerds made!');
+		//consider passing in the gametoken so we don't repeat the same game in the DOM
 	console.log(otherWorks);
+
 	getTokensFromDevelopedGames(otherWorks);
 	
 }
@@ -186,33 +185,23 @@ console.log(coinPurse);
 		let idCard = coinPurse[i]
 				$.ajax({
 					type:'get',
-					url: `https://www.giantbomb.com/api/game/${idCard}`,
+					url: `https://www.giantbomb.com/api/game/${idCard}/`,
 					data: {
 						api_key: gBApiKey,
 						format: 'jsonp',
-						json_callback: 'constructGameObject',
-						field_list: 'name, original_release_date, image, developers, platforms'
+						json_callback: 'cookSearchGame',
+						field_list: 'name,original_release_date,image,developers,platforms'
 					},
 					dataType: 'jsonp'
 				});
 	}
+	console.log('This is our grand collection!: ' + gameLibrary);
+	console.log(gameLibrary);
+
 }
 
 
-// function useToken(gameToken) {
-// 	console.log(`running useToken...`);
-// 	$.ajax({
-// 		type: 'get',
-// 		url: `https://www.giantbomb.com/api/game/${gameToken}/`,
-// 		data: {
-// 			api_key: gBApiKey,
-// 			format: 'jsonp',
-// 			json_callback: 'getDetails',
-// 			field_list: 'name,original_release_date,image,developers,platforms'
-// 		},
-// 		dataType: 'jsonp'
-// 	});
-	
-// }
+
+
 
 $(submitFormGetSearchTerm);
