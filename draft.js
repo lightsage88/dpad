@@ -2,6 +2,7 @@
 const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
 const gameLibrary = [];
+let tally = 0;
 //OUR videoGame OBJECT CONSTRUCTOR
 function videoGame(title, image, year, developer, console){
 	this.title = title;
@@ -16,7 +17,9 @@ function submitFormGetSearchTerm(){
 	$('.js-search-form').submit(function(event) {
 		console.log('running submitFormGetSearchTerm...');
 		event.preventDefault();
-		$('.js-search-result').empty();
+		tally = 0;
+		$('.soughtGame').empty();
+		$('.games').empty();
 		const searchBar = $(this).find('.js-search');
 		const searchTerm = searchBar.val();
 		searchBar.val('');
@@ -81,44 +84,131 @@ function useToken(gameToken) {
 }
 //fuck dry, after cooking up search details
 function getDetails(data) {
-	console.log(`running getDetails...`);
+	console.log('running getDetails...');
 	console.log(data);
-	cookSearchGame(data);
-	let details = jQuery.makeArray(data.results);
-	console.log('These are the details:' + details);
-	researchQueryGames(details);
-
-}
-
-function cookSearchGame(data){
-	console.log('cooking up the game you searched for...');
-	let details = jQuery.makeArray(data.results);
-	console.log(details);
-	let title = details[0].name;
-		let image = details[0].image.thumb_url;
-				let fullReleaseDate = details[0].original_release_date;
-		let releaseYear = fullReleaseDate.slice(0,4);
-		let devTeam = details[0].developers[0].name;
-		let gameConsole = [];
-				for (let i=0; i< details[0].platforms.length; i++) {
-						gameConsole.push(' '+ details[0].platforms[i].name);
+	let soughtGame = jQuery.makeArray(data.results);
+	let title = soughtGame[0].name;
+	let image = soughtGame[0].image.thumb_url;
+	let year = soughtGame[0].original_release_date.slice(0,4);
+			if(soughtGame[0].original_release_date == null) {
+				soughtGame[0].original_release_date === '1990';
+			} else {}
+	let developer = soughtGame[0].developers[0].name;
+	let gameConsole = [];
+		for (let i=0; i< soughtGame[0].platforms.length; i++) {
+						gameConsole.push(' '+ soughtGame[0].platforms[i].name);
 				}
-	constructGameObject(title, image, releaseYear, devTeam, gameConsole);
+		$('.soughtGame').append(`
+		<h2>You searched for <strong>${title}</strong>!</h2>
+			<ul class='game'>
+				<li class='image'><img src='${image}'></li>
+				<li class='title'>${title}</li>
+				<li class='year'>${year}</li>
+				<li class='developer'>${developer}</li>
+				<li class='console'>${gameConsole}</li>
+			</ul>
+		`);
+	researchQueryGames(data);
 }
 
-function constructGameObject(title, image, releaseYear, devTeam, gameConsole) {
-	let game = new videoGame(title, image, releaseYear, devTeam, gameConsole);
+
+
+
+
+	// cookSearchGame(data);
+	// let details = jQuery.makeArray(data.results);
+	// console.log('These are the details:' + details);
+	// researchQueryGames(details);
+
+
+
+// function cookSearchGame(data){
+// 	console.log('cooking up the game you searched for...');
+// 	let details = jQuery.makeArray(data.results);
+// 	console.log(details);
+// 	let title = details[0].name;
+// 		let image = details[0].image.thumb_url;
+// 				let fullReleaseDate = details[0].original_release_date;
+// 		let releaseYear = fullReleaseDate.slice(0,4);
+// 		let devTeam = details[0].developers[0].name;
+// 		let gameConsole = [];
+// 				for (let i=0; i< details[0].platforms.length; i++) {
+// 						gameConsole.push(' '+ details[0].platforms[i].name);
+// 				}
+// 	constructGameObject(title, image, releaseYear, devTeam, gameConsole);
+// }
+
+//function constructGameObject(title, image, releaseYear, devTeam, gameConsole) {
+function sonicSpeed(data) {
+	console.log('running at Sonic Speed!');
+	let ringBag = jQuery.makeArray(data.results);
+	console.log(ringBag);
+	let title = ringBag[0].name;
+	let image = ringBag[0].image.thumb_url;
+	//let year = ringBag[0].original_release_date.slice(0,4);				
+	let year = '0';
+
+			if(ringBag[0].original_release_date == null) {
+				console.log('The year is null...crap');
+				year = '2018';
+				console.log('the year is now 1990, cargo pants are in!');
+			} else {
+				year = ringBag[0].original_release_date.slice(0,4);
+
+			}
+	let devTeam = ringBag[0].developers[0].name;
+	let gameConsole = [];
+					for (let i=0; i<ringBag[0].platforms.length; i++) {
+						gameConsole.push(' ' + ringBag[0].platforms[i].name);
+					}
+	constructGameObject(title, image, year, devTeam, gameConsole);
+}
+
+//
+// var arr = [{
+//    year: 1986
+// }, {
+//    year: 2001
+// }, {
+//    year: 1492
+// }];
+
+// arr.sort(function(a, b) {
+//     return a.year - b.year;
+// });
+
+function constructGameObject(title, image, year, devTeam, gameConsole) {
+	let game = new videoGame(title, image, year, devTeam, gameConsole);
 	console.log(game);
 	gameLibrary.push(game);
-	gameLibrary.sort(function(a,b){
-		return a.year + b.year;
-	});
-	//displayVideoGame(game);
+	console.log(gameLibrary);
+	console.log(tally);
+	console.log('behold the game library! It is ' + gameLibrary.length + ' parts long!');
+// 	if(!gameLibrary.length===0){
+// 		for(let i = 0; i<=gameLibrary.length-1; i++){
+// 			console.log(gameLibrary[i].year);
+// 			if(gameLibrary[i].year < gameLibrary[i++].year) {
+// 				gameLibrary[i] = gameLibrary[i++];
+// 			} else {}
+// 		}
+// 	} else {}
+// 	console.log(gameLibrary);
+// }
+if(gameLibrary.length === tally) {
+	sortLibrary(gameLibrary);
+} else {
+	console.log('not there yet');
+}
+}
+
+function sortLibrary(gameLibrary) {
+	console.log(gameLibrary);
+		gameLibrary.sort(function (a, b) {
+			return a.year - b.year;
+		});
+	console.log('hopefully we are sorted now...');
 	console.log(gameLibrary);
 }
-// t
-// function sortLibrary(gameLibrary)
-// ///arrays don'
 
 function displayVideoGame(game) {
 	$('.games').append(`
@@ -134,7 +224,9 @@ function displayVideoGame(game) {
 
 
 
-function researchQueryGames(details){
+function researchQueryGames(data){
+	//need to get data from this parsed to a point where I can get to the developer api code
+	let details = jQuery.makeArray(data.results);
 	console.log('cooking up games made by the same developer...');
 	let devTag = details[0].developers[0].api_detail_url;
 	console.log('this is the devTag from which we will do the cutting: ' + devTag);
@@ -164,6 +256,8 @@ function sortDevelopedGames(data, gameToken) {
 	console.log('behold the other games, these nerds made!');
 		//consider passing in the gametoken so we don't repeat the same game in the DOM
 	console.log(otherWorks);
+	tally = otherWorks.length;
+	console.log(tally);
 
 	getTokensFromDevelopedGames(otherWorks);
 	
@@ -189,16 +283,15 @@ console.log(coinPurse);
 					data: {
 						api_key: gBApiKey,
 						format: 'jsonp',
-						json_callback: 'cookSearchGame',
+						json_callback: 'sonicSpeed',
 						field_list: 'name,original_release_date,image,developers,platforms'
 					},
 					dataType: 'jsonp'
 				});
 	}
-	console.log('This is our grand collection!: ' + gameLibrary);
-	console.log(gameLibrary);
-
 }
+
+
 
 
 
