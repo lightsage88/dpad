@@ -203,9 +203,17 @@ if(gameLibrary.length === tally) {
 
 function sortLibrary(gameLibrary) {
 	console.log(gameLibrary);
-		gameLibrary.sort(function (a, b) {
-			return a.year - b.year;
-		});
+		// gameLibrary.sort(function (a, b) {
+		// 	return a.year - b.year;
+		// });
+		for(let i=0; i<=gameLibrary.length; i++) {
+			
+			if(gameLibrary[i].year >= gameLibrary[i++].year) {
+				console.log('these came out the same year');
+			} else {
+				gameLibrary[i] = gameLibrary[i++];
+			}
+		}
 	console.log('hopefully we are sorted now...');
 	console.log(gameLibrary);
 }
