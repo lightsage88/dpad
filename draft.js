@@ -1,9 +1,7 @@
 
 const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
-const IGBDKEY = '4a6d0c5e69a9b371f76295af4af727a3';
-const IGDBENDPOINT = 'https://api-2445582011268.apicast.io/';
-let gameLibrary = [];
+const gameLibrary = [];
 //OUR videoGame OBJECT CONSTRUCTOR
 function videoGame(title, image, year, developer, console){
 	this.title = title;
@@ -39,9 +37,9 @@ function selectGame(searchTerm, json_callback) {
 	 	type: 'get',
 	 	url: 'https://www.giantbomb.com/api/search/',
 	 	data: 
-	 		{api_key: `${search.api_key}`, 
-	 		 query: `${search.query}`,
-	 		 resource: `${search.resource}`,
+	 		{api_key: `${gBApiKey}`, 
+	 		 query: `${searchTerm}`,
+	 		 resource: `games`,
 	 		 format: 'jsonp',
 	 		 json_callback: 'collectToken'
 	 		},
@@ -63,8 +61,7 @@ function collectToken(data) {
 	let gameToken = urlString.slice(35).replace('/', '');
 
 	console.log(gameToken);
-	useToken(gameToken);
-	return gameToken;	
+	useToken(gameToken);	
 }
 
 function useToken(gameToken) {
@@ -82,7 +79,7 @@ function useToken(gameToken) {
 	});
 	
 }
-
+//fuck dry, after cooking up search details
 function getDetails(data) {
 	console.log(`running getDetails...`);
 	console.log(data);
@@ -113,12 +110,15 @@ function constructGameObject(title, image, releaseYear, devTeam, gameConsole) {
 	let game = new videoGame(title, image, releaseYear, devTeam, gameConsole);
 	console.log(game);
 	gameLibrary.push(game);
-	displayVideoGame(game);
+	gameLibrary.sort(function(a,b){
+		return a.year + b.year;
+	});
+	//displayVideoGame(game);
 	console.log(gameLibrary);
-	
-	
 }
-///arrays don't
+// t
+// function sortLibrary(gameLibrary)
+// ///arrays don'
 
 function displayVideoGame(game) {
 	$('.games').append(`
