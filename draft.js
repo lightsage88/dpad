@@ -1,8 +1,9 @@
 
 const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
-const gameLibrary = [];
-let tally = 0;
+let gameLibrary = [];
+let primeTitle = '';
+
 //OUR videoGame OBJECT CONSTRUCTOR
 function videoGame(title, image, year, developer, console){
 	this.title = title;
@@ -17,17 +18,17 @@ function submitFormGetSearchTerm(){
 	$('.js-search-form').submit(function(event) {
 		console.log('running submitFormGetSearchTerm...');
 		event.preventDefault();
-		tally = 0;
+		gameLibrary = [];
 		$('.soughtGame').empty();
 		$('.games').empty();
 		const searchBar = $(this).find('.js-search');
 		const searchTerm = searchBar.val();
 		searchBar.val('');
-		selectGame(searchTerm, collectToken);
+		selectGame(searchTerm);
 	})
 }	
 
-function selectGame(searchTerm, json_callback) {
+function selectGame(searchTerm) {
 	console.log('running selectGame...');
 		const search = {
 			query: `${searchTerm}`,
@@ -35,8 +36,7 @@ function selectGame(searchTerm, json_callback) {
 			resource: 'games',
 			};
 	console.log(search);
-		
-	 $.ajax({
+	$.ajax({
 	 	type: 'get',
 	 	url: 'https://www.giantbomb.com/api/search/',
 	 	data: 
@@ -55,15 +55,9 @@ function selectGame(searchTerm, json_callback) {
 function collectToken(data) {
 
 	console.log('running collectToken...');
-	console.log(data);
-	let firstTitle = data.results[0];
-	console.log(firstTitle);
-	let urlString = firstTitle.api_detail_url;
-	console.log('This is the thing we will cut the code from: ' + urlString);
-	console.log(urlString.length);
-	let gameToken = urlString.slice(35).replace('/', '');
-
+	let gameToken = data.results[0].api_detail_url.slice(35).replace('/','');
 	console.log(gameToken);
+	console.log('We made a gameToken for ' + data.results[0].name);
 	useToken(gameToken);	
 }
 
@@ -88,6 +82,7 @@ function getDetails(data) {
 	console.log(data);
 	let soughtGame = jQuery.makeArray(data.results);
 	let title = soughtGame[0].name;
+	primeTitle = soughtGame[0].name;
 	let image = soughtGame[0].image.thumb_url;
 	let year = soughtGame[0].original_release_date.slice(0,4);
 			if(soughtGame[0].original_release_date == null) {
@@ -102,7 +97,7 @@ function getDetails(data) {
 		<h2>You searched for <strong>${title}</strong>!</h2>
 			<ul class='game'>
 				<li class='image'><img src='${image}'></li>
-				<li class='title'>${title}</li>
+				<li class='primeTitle'>${title}</li>
 				<li class='year'>${year}</li>
 				<li class='developer'>${developer}</li>
 				<li class='console'>${gameConsole}</li>
@@ -164,69 +159,62 @@ function sonicSpeed(data) {
 	constructGameObject(title, image, year, devTeam, gameConsole);
 }
 
-//
-// var arr = [{
-//    year: 1986
-// }, {
-//    year: 2001
-// }, {
-//    year: 1492
-// }];
 
-// arr.sort(function(a, b) {
-//     return a.year - b.year;
-// });
 
 function constructGameObject(title, image, year, devTeam, gameConsole) {
 	let game = new videoGame(title, image, year, devTeam, gameConsole);
 	console.log(game);
 	gameLibrary.push(game);
 	console.log(gameLibrary);
-	console.log(tally);
 	console.log('behold the game library! It is ' + gameLibrary.length + ' parts long!');
-// 	if(!gameLibrary.length===0){
-// 		for(let i = 0; i<=gameLibrary.length-1; i++){
-// 			console.log(gameLibrary[i].year);
-// 			if(gameLibrary[i].year < gameLibrary[i++].year) {
-// 				gameLibrary[i] = gameLibrary[i++];
-// 			} else {}
-// 		}
-// 	} else {}
-// 	console.log(gameLibrary);
-// }
-if(gameLibrary.length === tally) {
-	sortLibrary(gameLibrary);
-} else {
-	console.log('not there yet');
-}
+			if(gameLibrary.length === 10 || gameLibrary.length < 10) {
+				sortLibrary(gameLibrary);
+			} 
+
+
+
 }
 
 function sortLibrary(gameLibrary) {
 	console.log(gameLibrary);
-		// gameLibrary.sort(function (a, b) {
-		// 	return a.year - b.year;
-		// });
-		for(let i=0; i<=gameLibrary.length; i++) {
-			
-			if(gameLibrary[i].year >= gameLibrary[i++].year) {
-				console.log('these came out the same year');
-			} else {
-				gameLibrary[i] = gameLibrary[i++];
+		gameLibrary.sort(function (a, b) {
+			return a.year - b.year;
+		});
+		gameLibrary.sort(function (a,b){
+			return a.year + b.year;
+		});
+		for(let i = 0; i < gameLibrary.length; i++) {
+			if(gameLibrary[i].title == primeTitle){
+				gameLibrary.splice(i, 1);
 			}
 		}
-	console.log('hopefully we are sorted now...');
+	console.log('hopefully we are super sorted now...');
 	console.log(gameLibrary);
+	displayVideoGame(gameLibrary);
 }
 
-function displayVideoGame(game) {
-	$('.games').append(`
-		<img src=${game.image}>
+function displayVideoGame(array) {
+	$('.games').prepend(`<h3>Here are other games 
+		made by the same
+		developer`);
+	console.log(array);
+
+	
+
+
+	for(let i = 0; i <= array.length -1; i++){
+
+		$('.games').append(`
+		<img src=${array[i].image}>
 		<ul class='game'>
-			<li class='title'>${game.title}</li>
-			<li class='year'>${game.year}</li>
-			<li class='developer'>${game.developer}</li>
-			<li class='console'>${game.console}</li>
+			<li class='title'>${array[i].title}</li>
+			<li class='year'>${array[i].year}</li>
+			<li class='developer'>${array[i].developer}</li>
+			<li class='console'>${array[i].console}</li>
 		</ul>`);
+	}
+
+	
 }
 
 
@@ -248,46 +236,35 @@ function researchQueryGames(data){
 			api_key: gBApiKey,
 			format: 'jsonp',
 			json_callback: 'sortDevelopedGames',
-			field_list: 'developed_games'
+			field_list: 'developed_games',
+			scope: {
+				limit: 5
+			}
 		},
-		dataType: 'jsonp'
+		dataType: 'jsonp',
+		scope: {
+			limit: 5
+		}
 	});
 }
 
 
 
-function sortDevelopedGames(data, gameToken) {
+function sortDevelopedGames(data) {
 	console.log(data);
-	console.log(gameToken);
 	console.log('see the token');
 	let otherWorks = jQuery.makeArray(data.results.developed_games);
 	console.log('behold the other games, these nerds made!');
-		//consider passing in the gametoken so we don't repeat the same game in the DOM
-	console.log(otherWorks);
-	tally = otherWorks.length;
-	console.log(tally);
-
-	getTokensFromDevelopedGames(otherWorks);
-	
-}
-//otherworks is an array
-function getTokensFromDevelopedGames(otherWorks) {
-console.log(otherWorks[0].api_detail_url + ' just a taste of what we need');
-let coinPurse = [];
-for(let i = 0; i<=otherWorks.length -1 ; i++) {
-	coinPurse.push(otherWorks[i].api_detail_url.slice(35).replace('/',''));
-}
-console.log(coinPurse);
-gatherInfoOnOtherGames(coinPurse);
-}
-
-function gatherInfoOnOtherGames(coinPurse) {
-console.log(coinPurse);
-	for(let i = 0; i<=coinPurse.length -1; i++){
-		let idCard = coinPurse[i]
+	let selectedWorks = [];
+	function blip(otherWorks) {
+		console.log(`otherWorks is ${otherWorks.length} long!`);
+			for(let i=0; i < 10; i++) {
+				
+				let zipcode = otherWorks[i].api_detail_url.slice(35).replace('/','');
+				
 				$.ajax({
-					type:'get',
-					url: `https://www.giantbomb.com/api/game/${idCard}/`,
+					type: 'get',
+					url: `https://www.giantbomb.com/api/game/${zipcode}/`,
 					data: {
 						api_key: gBApiKey,
 						format: 'jsonp',
@@ -296,8 +273,16 @@ console.log(coinPurse);
 					},
 					dataType: 'jsonp'
 				});
-	}
+			}
+		}
+	blip(otherWorks);
+	console.log(`selectedWorks is ${selectedWorks.length}`);
+	console.log(selectedWorks);
 }
+
+
+
+
 
 
 
