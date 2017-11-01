@@ -167,7 +167,7 @@ function constructGameObject(title, image, year, devTeam, gameConsole) {
 	gameLibrary.push(game);
 	console.log(gameLibrary);
 	console.log('behold the game library! It is ' + gameLibrary.length + ' parts long!');
-			if(gameLibrary.length === 10 || gameLibrary.length < 10) {
+			if(gameLibrary.length === 10) {
 				sortLibrary(gameLibrary);
 			} 
 
