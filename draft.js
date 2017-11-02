@@ -3,6 +3,7 @@ const gBApiKey = '65afeff37ed837e24d6273ee389126d1df1a195c';
 const gBSearch = 'http://www.giantbomb.com/api/search/';
 let gameLibrary = [];
 let primeTitle = '';
+let superCount = null;
 
 //OUR videoGame OBJECT CONSTRUCTOR
 function videoGame(title, image, year, developer, console){
@@ -19,6 +20,7 @@ function submitFormGetSearchTerm(){
 		console.log('running submitFormGetSearchTerm...');
 		event.preventDefault();
 		gameLibrary = [];
+		superCount = null;
 		$('.soughtGame').empty();
 		$('.games').empty();
 		const searchBar = $(this).find('.js-search');
@@ -167,9 +169,10 @@ function constructGameObject(title, image, year, devTeam, gameConsole) {
 	gameLibrary.push(game);
 	console.log(gameLibrary);
 	console.log('behold the game library! It is ' + gameLibrary.length + ' parts long!');
-			if(gameLibrary.length === 10) {
+	console.log(superCount + 'is the magic number');
+		if(gameLibrary.length === superCount) {
 				sortLibrary(gameLibrary);
-			} 
+			}
 
 
 
@@ -186,6 +189,7 @@ function sortLibrary(gameLibrary) {
 		for(let i = 0; i < gameLibrary.length; i++) {
 			if(gameLibrary[i].title == primeTitle){
 				gameLibrary.splice(i, 1);
+				superCount = gameLibrary.length;
 			}
 		}
 	console.log('hopefully we are super sorted now...');
@@ -202,7 +206,7 @@ function displayVideoGame(array) {
 	
 
 
-	for(let i = 0; i <= array.length -1; i++){
+	for(let i = 0; i <= gameLibrary.length; i++){
 
 		$('.games').append(`
 		<img src=${array[i].image}>
@@ -214,7 +218,7 @@ function displayVideoGame(array) {
 		</ul>`);
 	}
 
-	
+	return;
 }
 
 
@@ -254,11 +258,18 @@ function sortDevelopedGames(data) {
 	console.log(data);
 	console.log('see the token');
 	let otherWorks = jQuery.makeArray(data.results.developed_games);
+	console.log(otherWorks.length);
+	if(otherWorks.length <=10 ) {
+		superCount = otherWorks.length;
+	} else {
+		superCount = 10;
+	}
+	console.log(superCount);
 	console.log('behold the other games, these nerds made!');
 	let selectedWorks = [];
 	function blip(otherWorks) {
 		console.log(`otherWorks is ${otherWorks.length} long!`);
-			for(let i=0; i < 10; i++) {
+			for(let i=0; i <=superCount; i++) {
 				
 				let zipcode = otherWorks[i].api_detail_url.slice(35).replace('/','');
 				
@@ -273,6 +284,7 @@ function sortDevelopedGames(data) {
 					},
 					dataType: 'jsonp'
 				});
+
 			}
 		}
 	blip(otherWorks);
