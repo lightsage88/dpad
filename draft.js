@@ -102,10 +102,8 @@ function getDetails(data) {
 				<li class='primeTitle'>${title}</li>
 				<li class='year'>Year: ${year}</li>
 				<li class='developer'>Developer: ${developer}</li>
-				<li class='console'>Available on: ${gameConsole}</li>
-			</ul>
-			<br>
-		`);
+				<li class='soughtConsole'>Available on: ${gameConsole}</li>
+			</ul>`);
 	researchQueryGames(data);
 }
 

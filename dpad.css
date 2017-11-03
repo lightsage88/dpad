@@ -21,9 +21,7 @@ ul  {
 body{
 	/*height: 100%;*/
 	background: rgba(0,2,0,0.4);
-	border: solid 2px cyan;
-
-	
+	border: 1px cyan solid;
 }
 
 header h1 {
@@ -98,6 +96,11 @@ img {
 	border: solid 2px cyan;
 
 }
+
+.otros{
+/*	margin-top: 1em;
+*/	padding-top: .5em;
+}
 	/*main{
 		margin-bottom: 100%;
 	}*/
@@ -112,7 +115,7 @@ header span {
 		float: right;
 		clear: right;*/
 		position: relative;
-		margin-bottom: 4em;
+		margin-bottom: 2em;
 		/*border: black 1px solid;*/
 		padding-top: 3em;
 		height: 48.5%;
@@ -122,11 +125,18 @@ header span {
 		position: block;
 		font-size: 3em;
 		position: relative;
-		/*top: 2em;*/
-
-
-
 	} 
+
+	.soughtGame ul{
+		margin: 2em;
+		height: auto;
+
+	}
+
+	.soughtConsole {
+		font-size: 3em;
+		box-sizing: border-box;
+	}
 
 	.sought {
 		font-size: 3em;
@@ -135,7 +145,6 @@ header span {
 
 	.otros {
 		position: relative;
-		
 		clear: both;
 		text-align: center;
 		font-size: 3em;
