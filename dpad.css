@@ -59,3 +59,24 @@ form.js-search-form input, button {
 	border-top-left-radius: 1.8em;
 	border-bottom-right-radius: 1.8em;
 }
+
+.primeTitle, .title {
+	font-size: 1.5em;
+}
+
+.year, .developer, .console {
+	font-size: 1.3em;
+}
+
+.sought {
+	display: block;
+	padding: 0 .3em;
+	text-align: center;
+}
+
+.otros {
+	display: block;
+	text-align: center;
+	text-decoration: underline;
+	padding: 0 .5em;
+}

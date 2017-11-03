@@ -96,7 +96,7 @@ function getDetails(data) {
 						gameConsole.push(' '+ soughtGame[0].platforms[i].name);
 				}
 		$('.soughtGame').append(`
-		<h2>You searched for <strong>${title}</strong>!</h2>
+		<h2 class='sought'>You searched for<br><strong>${title}</strong>!</h2>
 			<ul class='game'>
 				<li class='image'><img src='${image}'></li>
 				<li class='primeTitle'>${title}</li>
@@ -112,30 +112,7 @@ function getDetails(data) {
 
 
 
-	// cookSearchGame(data);
-	// let details = jQuery.makeArray(data.results);
-	// console.log('These are the details:' + details);
-	// researchQueryGames(details);
-
-
-
-// function cookSearchGame(data){
-// 	console.log('cooking up the game you searched for...');
-// 	let details = jQuery.makeArray(data.results);
-// 	console.log(details);
-// 	let title = details[0].name;
-// 		let image = details[0].image.thumb_url;
-// 				let fullReleaseDate = details[0].original_release_date;
-// 		let releaseYear = fullReleaseDate.slice(0,4);
-// 		let devTeam = details[0].developers[0].name;
-// 		let gameConsole = [];
-// 				for (let i=0; i< details[0].platforms.length; i++) {
-// 						gameConsole.push(' '+ details[0].platforms[i].name);
-// 				}
-// 	constructGameObject(title, image, releaseYear, devTeam, gameConsole);
-// }
-
-//function constructGameObject(title, image, releaseYear, devTeam, gameConsole) {
+	
 function sonicSpeed(data) {
 	console.log('running at Sonic Speed!');
 	let ringBag = jQuery.makeArray(data.results);
@@ -198,9 +175,9 @@ function sortLibrary(gameLibrary) {
 }
 
 function displayVideoGame(array) {
-	$('.games').prepend(`<h3>Here are other games 
+	$('.games').prepend(`<h3 class= 'otros'>Here are other games 
 		made by the same
-		developer`);
+		developer</h3>`);
 	console.log(array);
 
 	
