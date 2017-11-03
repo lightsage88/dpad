@@ -85,7 +85,7 @@ function getDetails(data) {
 	let soughtGame = jQuery.makeArray(data.results);
 	let title = soughtGame[0].name;
 	primeTitle = soughtGame[0].name;
-	let image = soughtGame[0].image.thumb_url;
+	let image = soughtGame[0].image.super_url;
 	let year = soughtGame[0].original_release_date.slice(0,4);
 			if(soughtGame[0].original_release_date == null) {
 				soughtGame[0].original_release_date === '1990';
@@ -97,13 +97,14 @@ function getDetails(data) {
 				}
 		$('.soughtGame').append(`
 		<h2 class='sought'>You searched for<br><strong>${title}</strong>!</h2>
+			<img class='image' src='${image}'>
 			<ul class='game'>
-				<li class='image'><img src='${image}'></li>
 				<li class='primeTitle'>${title}</li>
 				<li class='year'>Year: ${year}</li>
 				<li class='developer'>Developer: ${developer}</li>
 				<li class='console'>Available on: ${gameConsole}</li>
 			</ul>
+			<br>
 		`);
 	researchQueryGames(data);
 }
@@ -118,7 +119,7 @@ function sonicSpeed(data) {
 	let ringBag = jQuery.makeArray(data.results);
 	console.log(ringBag);
 	let title = ringBag[0].name;
-	let image = ringBag[0].image.thumb_url;
+	let image = ringBag[0].image.super_url;
 	//let year = ringBag[0].original_release_date.slice(0,4);				
 	let year = '0';
 
@@ -186,13 +187,14 @@ function displayVideoGame(array) {
 	for(let i = 0; i <= gameLibrary.length; i++){
 
 		$('.games').append(`
-		<img src=${array[i].image}>
+		<br>
+		<img class='image' src=${array[i].image}>
 		<ul class='game'>
 			<li class='title'>${array[i].title}</li>
 			<li class='year'>Year: ${array[i].year}</li>
 			<li class='developer'>Developer: ${array[i].developer}</li>
 			<li class='console'>Available on: ${array[i].console}</li>
-		</ul>`);
+		</ul><br>`);
 	}
 
 	return;

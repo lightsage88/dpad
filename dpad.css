@@ -19,7 +19,7 @@ ul  {
 
 
 body{
-	height: auto;
+	/*height: 100%;*/
 	background: rgba(0,2,0,0.4);
 	border: solid 2px cyan;
 
@@ -45,10 +45,13 @@ form.js-search-form{
 	text-align: center;
 }
 
+
+
 form.js-search-form input {
 	background: black;
 	color: cyan;
 	letter-spacing: .13em;
+	text-indent: 1em;
 }
 
 form.js-search-form input, button {
@@ -62,6 +65,11 @@ form.js-search-form input, button {
 
 .primeTitle, .title {
 	font-size: 1.5em;
+}
+
+img {
+	width: 10em;
+	height: 13em;
 }
 
 .year, .developer, .console {
@@ -79,4 +87,79 @@ form.js-search-form input, button {
 	text-align: center;
 	text-decoration: underline;
 	padding: 0 .5em;
+}
+
+/*For larger screens*/
+
+@media only screen and (min-width: 460px) {
+	body{
+	background: rgba(0,2,0,0.4);
+	border: solid 2px cyan;
+
+}
+	main{
+		margin-bottom: 100%;
+	}
+
+header span {
+	font-size: 2.5em;
+}
+	
+	ul {
+		
+		/*margin-bottom: 2em;
+		float: right;
+		clear: right;*/
+		position: relative;
+		margin-bottom: 4em;
+		border: black 1px solid;
+		padding-top: 1.5em;
+		height: 48.5%;
+	}
+	.primeTitle, .title, .year, .developer, .console{
+		color: black;
+		position: block;
+		font-size: 3em;
+		position: relative;
+		/*top: 2em;*/
+
+
+
+	} 
+
+	.sought {
+		font-size: 3em;
+		font-weight: 4px;
+	}
+
+	.otros {
+		position: relative;
+		top: 1em;
+		clear: both;
+		text-align: center;
+		font-size: 3em;
+	}
+
+	img {
+		position: relative;
+		height: 45%;
+		width: 30%;
+		float: left;
+		clear: left;
+		padding: 1em;
+		margin-bottom: 4em;
+	}
+
+	form.js-search-form input {
+		height: 2.5em;
+		padding: 2px;
+		font-size: 3em;
+		color: cyan;
+	}
+
+	form.js-search-form button {
+		font-size: 2em;
+	}
+
+
 }
