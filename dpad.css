@@ -70,6 +70,7 @@ form.js-search-form input, button {
 img {
 	width: 10em;
 	height: 13em;
+	padding-left: .5em;
 }
 
 .year, .developer, .console {
