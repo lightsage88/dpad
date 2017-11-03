@@ -100,9 +100,9 @@ function getDetails(data) {
 			<ul class='game'>
 				<li class='image'><img src='${image}'></li>
 				<li class='primeTitle'>${title}</li>
-				<li class='year'>${year}</li>
-				<li class='developer'>${developer}</li>
-				<li class='console'>${gameConsole}</li>
+				<li class='year'>Year: ${year}</li>
+				<li class='developer'>Developer: ${developer}</li>
+				<li class='console'>Available on: ${gameConsole}</li>
 			</ul>
 		`);
 	researchQueryGames(data);
@@ -212,9 +212,9 @@ function displayVideoGame(array) {
 		<img src=${array[i].image}>
 		<ul class='game'>
 			<li class='title'>${array[i].title}</li>
-			<li class='year'>${array[i].year}</li>
-			<li class='developer'>${array[i].developer}</li>
-			<li class='console'>${array[i].console}</li>
+			<li class='year'>Year: ${array[i].year}</li>
+			<li class='developer'>Developer: ${array[i].developer}</li>
+			<li class='console'>Available on: ${array[i].console}</li>
 		</ul>`);
 	}
 

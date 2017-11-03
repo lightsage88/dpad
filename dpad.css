@@ -1,5 +1,61 @@
 /*DPAD CSS*/
 
+main {
+	font-family: 'Metal Gear Solid 2', sans-serif;
+	letter-spacing: .13em;
+	
+}
+
 ul  {
 	list-style: none;
+}
+
+@font-face {
+	font-family: 'Metal Gear Solid 2';
+	src: url('assets/fonts/mgs2.ttf') format('truetype');
+}
+
+/*MOBILE STYLE*/
+
+
+body{
+	height: auto;
+	background: rgba(0,2,0,0.4);
+	border: solid 2px cyan;
+
+	
+}
+
+header h1 {
+	text-align: center;
+	font-size: 4em;
+	margin-top: .2em;
+	margin-bottom: 0px;
+	text-decoration: underline green;
+}
+
+header span {
+	display: block;
+	text-align: center;
+	font-size: 1.4em;
+}
+
+form.js-search-form{
+	display: block;
+	text-align: center;
+}
+
+form.js-search-form input {
+	background: black;
+	color: cyan;
+	letter-spacing: .13em;
+}
+
+form.js-search-form input, button {
+	font-family: 'Metal Gear Solid 2', sans-serif;
+	padding: 3%;
+	margin: 0px;
+	font-size: 1.1em;
+	border-top-left-radius: 1.8em;
+	border-bottom-right-radius: 1.8em;
 }
