@@ -97,9 +97,9 @@ img {
 	border: solid 2px cyan;
 
 }
-	main{
+	/*main{
 		margin-bottom: 100%;
-	}
+	}*/
 
 header span {
 	font-size: 2.5em;
@@ -112,8 +112,8 @@ header span {
 		clear: right;*/
 		position: relative;
 		margin-bottom: 4em;
-		border: black 1px solid;
-		padding-top: 1.5em;
+		/*border: black 1px solid;*/
+		padding-top: 3em;
 		height: 48.5%;
 	}
 	.primeTitle, .title, .year, .developer, .console{
@@ -134,7 +134,7 @@ header span {
 
 	.otros {
 		position: relative;
-		top: 1em;
+		
 		clear: both;
 		text-align: center;
 		font-size: 3em;
