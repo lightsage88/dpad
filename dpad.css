@@ -3,6 +3,7 @@
 main {
 	font-family: 'Metal Gear Solid 2', sans-serif;
 	letter-spacing: .13em;
+	color: lime;
 	
 }
 
@@ -18,10 +19,14 @@ ul  {
 /*MOBILE STYLE*/
 
 
-body{
-	/*height: 100%;*/
+/*body{
 	background: rgba(0,2,0,0.4);
 	border: 1px cyan solid;
+}*/
+
+body{
+	background: url('assets/marioCurtain.jpg') top left;
+	background-size: cover;
 }
 
 header h1 {
@@ -75,6 +80,11 @@ img {
 	font-size: 1.3em;
 }
 
+.game {
+	background: rgba(0,0,0,0.5);
+	border-radius: 3em;
+}
+
 .sought {
 	display: block;
 	padding: 0 .3em;
@@ -91,11 +101,14 @@ img {
 /*For larger screens*/
 
 @media only screen and (min-width: 460px) {
+	main{
+		color: black;
+	}
+
 	body{
 	background: rgba(0,2,0,0.4);
 	border: solid 2px cyan;
-
-}
+	}
 
 .otros{
 /*	margin-top: 1em;
