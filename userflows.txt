@@ -1,0 +1,14 @@
+﻿This is a very quick and dirty rundown of how DPAD, a thumb on progression in game development, will work.
+
+It's basically a search bar with a submit button and when you enter the name of a videogame, preferably one that you enjoy, it will search the giantbomb.com API for that game and then parse out details from the JSONP API code about the game to discern which development company was responsible for releasing and developing the game. 
+
+What happens then is that the program will take note of the development company's identifying API number for Giantbomb.com and search for releases from that development company and organize them chronologically. It will also hold information about the console availability of the game, when it was released, and a picture of the box art.
+
+These bits of information will be displayed in the DOM in an organized manner, responsively, so that you can see what else the development company of your favorite game has been up to...up to 10 of the most recent releases.
+
+
+What you will see: a search bar and a submit button.
+
+*If the search is successful, then you will wait about 8-12 seconds and the information will pop up.
+
+*If the search is NOT successful, then nothing will happen. Try again, and try to be more specific.
