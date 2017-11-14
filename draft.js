@@ -24,7 +24,20 @@ function submitFormGetSearchTerm(){
 		$('.soughtGame').empty();
 		$('.games').empty();
 		const searchBar = $(this).find('.js-search');
+
+		if(!(searchBar.val())){
+			$('form').append(`<h4 class='messengerBoy'>Please enter the name of
+				a video game</h4>`);
+			$('h4').fadeOut(4000);
+		} else {
+			$('form').append(`<h4 class='messengerBoy'>Hang tight, we're looking
+				up some things!`);
+		}
+
 		const searchTerm = searchBar.val();
+
+
+
 		searchBar.val('');
 		selectGame(searchTerm);
 	})
@@ -97,6 +110,7 @@ function getDetails(data) {
 				}
 		$('.soughtGame').append(`
 		<h2 class='sought'>You searched for<br><strong>${title}</strong>!</h2>
+			<h4>Not what you meant? Try being more specific next time.</h4>
 			<img class='image' src='${image}'>
 			<ul class='game'>
 				<li class='primeTitle'>${title}</li>
@@ -104,6 +118,7 @@ function getDetails(data) {
 				<li class='developer'>Developer: ${developer}</li>
 				<li class='soughtConsole'>Available on: ${gameConsole}</li>
 			</ul>`);
+		$('form').find('h4.messengerBoy').remove();
 	researchQueryGames(data);
 }
 
@@ -174,20 +189,18 @@ function sortLibrary(gameLibrary) {
 }
 
 function displayVideoGame(array) {
+
 	$('.games').prepend(`<h3 class= 'otros'>Here are other games 
 		made by the same
 		developer</h3>`);
 	console.log(array);
-
-	
-
 
 	for(let i = 0; i <= gameLibrary.length; i++){
 
 		$('.games').append(`
 		<br>
 		<img class='image' src=${array[i].image}>
-		<ul class='game'>
+		<ul class='otherGame'>
 			<li class='title'>${array[i].title}</li>
 			<li class='year'>Year: ${array[i].year}</li>
 			<li class='developer'>Developer: ${array[i].developer}</li>
