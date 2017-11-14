@@ -21,6 +21,7 @@ function submitFormGetSearchTerm(){
 		event.preventDefault();
 		gameLibrary = [];
 		superCount = null;
+		$('.messengerBoy').empty();
 		$('.soughtGame').empty();
 		$('.games').empty();
 		const searchBar = $(this).find('.js-search');
@@ -32,6 +33,7 @@ function submitFormGetSearchTerm(){
 		} else {
 			$('form').append(`<h4 class='messengerBoy'>Hang tight, we're looking
 				up some things!`);
+
 		}
 
 		const searchTerm = searchBar.val();
@@ -70,7 +72,15 @@ function selectGame(searchTerm) {
 function collectToken(data) {
 
 	console.log('running collectToken...');
+
+	if(data.results[0] === undefined) {
+		console.log('nope');
+		$('h4.messengerBoy').html('try something else');
+		return;
+	}
+
 	let gameToken = data.results[0].api_detail_url.slice(35).replace('/','');
+	
 	console.log(gameToken);
 	console.log('We made a gameToken for ' + data.results[0].name);
 	useToken(gameToken);	
