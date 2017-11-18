@@ -7,9 +7,7 @@
 main {
 	font-family: 'Bitsumishi', sans-serif;
 	letter-spacing: .13em;
-	color: lime;
-
-	
+	color: orange;
 }
 
 
@@ -31,7 +29,7 @@ h4 {
 
 
 body{
-	background: url('assets/marioCurtain.jpg') top left, rgba(0,0,0,0.5);
+/*	background: url('assets/marioCurtain.jpg') top left, rgba(0,0,0,0.5);*/
 	background-size: cover;
 
 }
@@ -78,8 +76,9 @@ form.js-search-form input {
 	background: black;
 	color: cyan;
 	letter-spacing: .13em;
-	text-indent: 1em;
-    width: 80%
+	text-indent: ;
+    width: 100%;
+    ;
 }
 
 form.js-search-form input, button {
@@ -124,15 +123,16 @@ img {
 /*zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
 @media only screen and (min-width: 460px) {
-	main{
-		color: black;
-	}
-
 	body{
-	background: rgba(0,2,0,0.4);
-	border: solid 2px cyan;
+		color: black;
+        background: #d0d6b5;
+        border: solid 2px #df2935;
 	}
-
+    
+    main, li{
+        color: #1178af;
+    }
+    
 	ul  {
 	list-style: none;
 	color: black;
@@ -207,7 +207,7 @@ background: rgba(0,0,0,0.6);
         height: auto;
     }
     
-    }
+   
     .platformList{
         list-style:square;
         padding: 0;
@@ -219,7 +219,6 @@ background: rgba(0,0,0,0.6);
     }
 
 .primeTitle, .title, .year, .developer, .console{
-		color: black;
 		position: block;
 		font-size: 3em;
 		position: relative;
@@ -260,6 +259,8 @@ background: rgba(0,0,0,0.6);
 		padding: 2px;
 		font-size: 3em;
 		color: cyan;
+        text-indent: 1em;
+        width: 70%;
 	}
 
 	form.js-search-form button {
@@ -267,4 +268,4 @@ background: rgba(0,0,0,0.6);
 	}
 
 
-}
+}/*end of media query!*/
