@@ -141,15 +141,18 @@ img {
     }
     .image{
         height: auto;
-        width; auto;
+        padding-bottom: 3em;
+        max-height: 25em;
+        width: auto;
+        max-width: 15em;
+        top: 2em;
     }
     .otros{
-    /*	margin-top: 1em;
-    */	padding-top: .5em;
+  padding-top: .5em;
     }
-	/*main{
-		margin-bottom: 100%;
-	}*/
+    
+    
+	
 
 header span {
 	font-size: 2.5em;
@@ -172,21 +175,31 @@ background: rgba(0,0,0,0.6);
 }*/
     
     .games{
-        border: dashed 8px yellow;
+/*        border: dashed 8px yellow;*/
         box-sizing: content-box;
         height: auto;
 	
     }
     .relatedWork{
-        border: groove red 3px;
+/*        border: groove red 3px;*/
                 
     }
     
+    .console{
+        text-align:justify;
+        float: left;
+        
+    }
+    
     .consoleList{
-        border: blue solid 4px;
+/*        border: blue solid 4px;*/
         padding: 0;
         list-style: square;
-        left: 1em
+        left: 1em;
+        width: auto;
+        text-align: left;
+        
+        font-size: .5em;
     }
     
     .soughtGame{
