@@ -208,6 +208,9 @@ function sortLibrary(gameLibrary) {
 
 function displayVideoGame(array) {
 
+    
+    
+    
 	$('.games').prepend(`<h3 class= 'otros'>Here are other games 
 		made by the same
 		developer</h3>`);
@@ -216,7 +219,7 @@ function displayVideoGame(array) {
 	for(let i = 0; i <= array.length; i++){
         let storage = array;
         console.log(array);
-        let systemBank = storage[i].console;
+        let systemBank = array[i].console[0];
         console.log(systemBank);
         systemBank.forEach(function(Object){
             console.log(Object);
@@ -237,8 +240,10 @@ function displayVideoGame(array) {
 		</ul>
 </section>
 <br>`);
-        for(let x = 0; x<=systemBank[0].length-1; x++) {
-            $('ul.consoleList').append(`<li>${systemBank[0][x]}</li>`);
+        for(let x = 0; x<=systemBank.length-1; x++) {
+            $('ul.consoleList').append(`<li>${systemBank[x]}</li>`);
+            console.log(systemBank[x]);
+            
             
         }
 
