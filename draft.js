@@ -30,6 +30,7 @@ function submitFormGetSearchTerm(){
 			$('form').append(`<h4 class='messengerBoy'>Please enter the name of
 				a video game</h4>`);
 			$('h4').fadeOut(4000);
+            return;
 		} else {
 			$('form').append(`<h4 class='messengerBoy'>Hang tight, we're looking
 				up some things!`);
@@ -120,14 +121,21 @@ function getDetails(data) {
 				}
 		$('.soughtGame').append(`
 		<h2 class='sought'>You searched for<br><strong>${title}</strong>!</h2>
-			<h4>Not what you meant? Try being more specific next time.</h4>
+			<h4 class='specificityMessage'>Not what you meant? Try being more specific next time.</h4>
 			<img class='image' src='${image}'>
 			<ul class='game'>
 				<li class='primeTitle'>${title}</li>
 				<li class='year'>Year: ${year}</li>
 				<li class='developer'>Developer: ${developer}</li>
-				<li class='soughtConsole'>Available on: ${gameConsole}</li>
+				<li class='soughtConsole'>Available on:
+            <ul class='platformList'>
+            </ul>
+                </li>
 			</ul>`);
+    gameConsole.forEach(function(item){
+        $('ul.platformList').append(`<li>${item}</li>`);
+       
+    });
 		$('form').find('h4.messengerBoy').remove();
 	researchQueryGames(data);
 }
@@ -205,17 +213,42 @@ function displayVideoGame(array) {
 		developer</h3>`);
 	console.log(array);
 
-	for(let i = 0; i <= gameLibrary.length; i++){
-
+	for(let i = 0; i <= array.length; i++){
+        let storage = array;
+        console.log(array);
+        let systemBank = storage[i].console;
+        console.log(systemBank);
+        systemBank.forEach(function(Object){
+            console.log(Object);
+        });
 		$('.games').append(`
 		<br>
+    <section class='relatedWork'>
 		<img class='image' src=${array[i].image}>
 		<ul class='otherGame'>
 			<li class='title'>${array[i].title}</li>
 			<li class='year'>Year: ${array[i].year}</li>
 			<li class='developer'>Developer: ${array[i].developer}</li>
-			<li class='console'>Available on: ${array[i].console}</li>
-		</ul><br>`);
+			<li class='console'>Available on:
+                <ul class='consoleList'>
+               
+                </ul>
+            </li>
+		</ul>
+</section>
+<br>`);
+        for(let x = 0; x<=systemBank[0].length-1; x++) {
+            $('ul.consoleList').append(`<li>${systemBank[0][x]}</li>`);
+            
+        }
+
+        
+//        systemBank.forEach(function(Object){
+//            x = 0;
+//            $('ul.consoleList').append(`<li>${Object[x]}<li>`);
+//            x++;
+//
+//        });
 	}
 
 	return;

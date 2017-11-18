@@ -1,5 +1,9 @@
 /*DPAD CSS*/
 
+.specificityMessage{
+    font-size: 1.4em;
+}
+
 main {
 	font-family: 'Bitsumishi', sans-serif;
 	letter-spacing: .13em;
@@ -44,6 +48,18 @@ header span {
 	display: block;
 	text-align: center;
 	font-size: 1.4em;
+    margin: .5em 0;
+}
+
+p.descriptor{
+    font-family: monospace;
+    text-align: center;
+    font-size: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    
+    
+    
 }
 
 form.js-search-form{
@@ -63,13 +79,14 @@ form.js-search-form input {
 	color: cyan;
 	letter-spacing: .13em;
 	text-indent: 1em;
+    width: 80%
 }
 
 form.js-search-form input, button {
 	font-family: 'Metal Gear Solid 2', sans-serif;
 	padding: 3%;
 	margin: 0px;
-	font-size: 1.1em;
+	font-size: 2px;
 	border-top-left-radius: 1.8em;
 	border-bottom-right-radius: 1.8em;
 }
@@ -79,8 +96,8 @@ form.js-search-form input, button {
 }
 
 img {
-	width: 10em;
-	height: 13em;
+	width: 8.5%;
+	height: 11%;
 	padding-left: .5em;
 }
 
@@ -104,6 +121,7 @@ img {
 }
 
 /*For larger screens*/
+/*zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
 @media only screen and (min-width: 460px) {
 	main{
@@ -119,11 +137,16 @@ img {
 	list-style: none;
 	color: black;
 	background: rgba(0,0,0,0);
-}
-.otros{
-/*	margin-top: 1em;
-*/	padding-top: .5em;
-}
+    
+    }
+    .image{
+        height: auto;
+        width; auto;
+    }
+    .otros{
+    /*	margin-top: 1em;
+    */	padding-top: .5em;
+    }
 	/*main{
 		margin-bottom: 100%;
 	}*/
@@ -147,6 +170,40 @@ ul {
 /*section.games{
 background: rgba(0,0,0,0.6);
 }*/
+    
+    .games{
+        border: dashed 8px yellow;
+        box-sizing: content-box;
+        height: auto;
+	
+    }
+    .relatedWork{
+        border: groove red 3px;
+                
+    }
+    
+    .consoleList{
+        border: blue solid 4px;
+        padding: 0;
+        list-style: square;
+        left: 1em
+    }
+    
+    .soughtGame{
+        box-sizing: content-box;
+        height: auto;
+    }
+    
+    }
+    .platformList{
+        list-style:square;
+        padding: 0;
+        box-sizing: content-box;
+        height: auto;
+        font-size: .7em;
+        display: block;
+        left: 1em;
+    }
 
 .primeTitle, .title, .year, .developer, .console{
 		color: black;
@@ -155,15 +212,12 @@ background: rgba(0,0,0,0.6);
 		position: relative;
 	} 
 
-	.soughtGame ul{
-		margin: 2em;
-		height: auto;
-
-	}
+	
 
 	.soughtConsole {
 		font-size: 3em;
 		box-sizing: border-box;
+        
 	}
 
 	.sought {
