@@ -207,56 +207,48 @@ function sortLibrary(gameLibrary) {
 }
 
 function displayVideoGame(array) {
-
-    
-    
-    
-	$('.games').prepend(`<h3 class= 'otros'>Here are other games 
+    $('.games').prepend(`<h3 class= 'otros'>Here are other games 
 		made by the same
 		developer</h3>`);
-	console.log(array);
-
-	for(let i = 0; i <= array.length; i++){
-        let storage = array;
-        console.log(array);
-        let systemBank = array[i].console[0];
-        console.log(systemBank);
-        systemBank.forEach(function(Object){
-            console.log(Object);
-        });
-		$('.games').append(`
-		<br>
-    <section class='relatedWork'>
-		<img class='image' src=${array[i].image}>
-		<ul class='otherGame'>
-			<li class='title'>${array[i].title}</li>
-			<li class='year'>Year: ${array[i].year}</li>
-			<li class='developer'>Developer: ${array[i].developer}</li>
-			<li class='console'>Available on:
-                <ul class='consoleList'>
-               
+    $('.games').append(`<br><section class='relatedWork'></section>`)
+    
+for(let z =0; z<=array.length; z++){
+    console.log(z);
+    let image = array[z].image;
+    let title = array[z].title;
+    let year = array[z].year;
+    let developer = array[z].developer;
+    let sysBank = [];
+            array[z].console[0].forEach(function(Object){
+            sysBank.push(Object);
+            console.log(sysBank);
+            });
+    console.log('behold the sysbank!');
+    console.log(sysBank);
+    let magicNumber = sysBank.length;
+    console.log(magicNumber);
+    
+    
+    $('.relatedWork').append(`
+        <br>
+    <img class='image' src= ${image}>
+    <ul class='otherGame'>
+        <li class='title'>${title}</li>
+        <li class='year'>Released: ${year}</li>
+        <li class='developer'>Developer: ${developer}</li>
+        <li class='console'>Available on:
+                <ul class='consoleList magico${z}'>
                 </ul>
-            </li>
-		</ul>
-</section>
-<br>`);
-        for(let x = 0; x<=systemBank.length-1; x++) {
-            $('ul.consoleList').append(`<li>${systemBank[x]}</li>`);
-            console.log(systemBank[x]);
-            
-            
-        }
-
+    </ul><!--otherGame-->
+`);
+    for(let i=0; i<magicNumber; i++){
+        $(`.magico${z}`).append(`<li>${sysBank[i]}</li>`);
         
-//        systemBank.forEach(function(Object){
-//            x = 0;
-//            $('ul.consoleList').append(`<li>${Object[x]}<li>`);
-//            x++;
-//
-//        });
-	}
+        }
+        
+    }
+    
 
-	return;
 }
 
 
