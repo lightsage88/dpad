@@ -14,7 +14,7 @@ main {
 
 @font-face {
 	font-family: 'Bitsumishi';
-	src: url('assets/fonts/BITSUMIS.ttf') format('truetype');
+	src: url('assets/fonts/BITSUMIS.TTF') format('truetype');
 }
 
 h4 {
