@@ -208,7 +208,7 @@ background: rgba(0,0,0,0.6);
         left: 1em;
         width: auto;
         text-align: left;
-        
+        box-sizing: content-box;
         font-size: .5em;
     }
     
