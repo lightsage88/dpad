@@ -101,6 +101,7 @@ img {
 	width: auto;
     max-width: 13em;
 	height: auto;
+    max-height: 11em;
 	padding-left: .5em;
 }
 
@@ -132,6 +133,8 @@ img {
         background: #d0d6b5;
         border: solid 2px #df2935;
 	}
+    
+    
     
     main, li{
         color: #1178af;

@@ -207,7 +207,7 @@ function sortLibrary(gameLibrary) {
 }
 
 function displayVideoGame(array) {
-    $('.games').prepend(`<h3 class= 'otros'>Here are other games 
+    $('.games').prepend(`<h3 class= 'otros'><br>Here are other games 
 		made by the same
 		developer</h3>`);
     $('.games').append(`<br><section class='relatedWork'></section>`)
@@ -231,8 +231,9 @@ for(let z =0; z<=array.length; z++){
     
     $('.relatedWork').append(`
         <br>
-    <img class='image' src= ${image}>
+    <div class='cosa'>
     <ul class='otherGame'>
+<li class='picPic'><img class='image' src= ${image}></li>
         <li class='title'>${title}</li>
         <li class='year'>Released: ${year}</li>
         <li class='developer'>Developer: ${developer}</li>
@@ -240,6 +241,7 @@ for(let z =0; z<=array.length; z++){
                 <ul class='consoleList magico${z}'>
                 </ul>
     </ul><!--otherGame-->
+</div>
 `);
     for(let i=0; i<magicNumber; i++){
         $(`.magico${z}`).append(`<li>${sysBank[i]}</li>`);
