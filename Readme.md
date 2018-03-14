@@ -1,11 +1,10 @@
 <h1>D-Pad</h1>
 <p><a href='https://lightsage88.github.io/dpad/'>D-PAD</a> is an app that allows you search for a video game title and see up to 10 other entries that that game's developers have made.</p>
-<img src='/src/staticAssets/gdcPreview.jpg'>
 
 ##GETTING STARTED
 # Use
 ```
->visit <a href='https://lightsage88.github.io/dpad/'>this link</a>
+>visit https://lightsage88.github.io/dpad/
 ```
 
 <h2>Introduction</h2>
