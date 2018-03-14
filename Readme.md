@@ -11,6 +11,8 @@
 <h2>Introduction</h2>
 <p>When I'm not coding or singing, I love to play videogames. I am of the camp of gamers that believes videogames can be works of art, equally as capable of presenting a story while reflecting the culture, societal attitudes, and issues of the day as say, for example, a novel, or a really good film. I think one of the first steps for games to achieve that level of acknowledgement in the public consciousness is for people to be made aware of what games developers are making and to get a sense of their track record in terms of what they have produced since and/or before a given title.<br>I created D-Pad as a way to get a sense of this progression.</p>
 
+<img src='readme.jpg'>
+
 <h2>How it Works</h2>
 
 <h3>Home</h3>
