@@ -98,7 +98,32 @@ function useToken(gameToken) {
 			json_callback: 'getDetails',
 			field_list: 'name,original_release_date,image,developers,platforms'
 		},
-		dataType: 'jsonp'
+		dataType: 'jsonp',
+		error: function(err){
+			if(err.status !== 200) {
+			console.log(err);
+			console.log('oops');
+			$('h4').animate({
+				left:'+=400'
+			}, 'slow', function(){
+				$('h4').remove();
+				$('form').append(`<h4 class='messengerBoy'>Otacon, we have a problem...try again.</h4>`);
+			});
+		}
+		// if(!(searchBar.val())){
+// 			$('form').append(`<h4 class='messengerBoy'>Please enter the name of
+// 				a video game</h4>`);
+// 			$('h4').fadeOut(4000);
+//             return;
+// 		} else {
+// 			$('form').append(`<h4 class='messengerBoy'>Hang tight, we're looking
+// 				up some things!`);
+
+// 		}
+
+
+
+		}
 	});
 	
 }
