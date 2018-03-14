@@ -7,9 +7,13 @@
 main {
 	font-family: 'Bitsumishi', sans-serif;
 	letter-spacing: .13em;
-	color: black;
+	color: #75b8c8;
+	
 }
 
+.messengerBoy {
+	font-size: 3vw;
+}
 
 
 @font-face {
@@ -23,14 +27,9 @@ h4 {
 	font-size: .4em;
 }
 
-/*MOBILE STYLE*/
 
-
-
-
-body{
-/*	background: url('assets/marioCurtain.jpg') top left, rgba(0,0,0,0.5);*/
-	background-size: cover;
+body{	
+	background:#220C10;
 
 }
 
@@ -39,7 +38,6 @@ header h1 {
 	font-size: 4em;
 	margin-top: .2em;
 	margin-bottom: 0px;
-	text-decoration: underline green;
 }
 
 header span {
@@ -55,11 +53,7 @@ p.descriptor{
     font-size: 1.35em;
     margin-left: 1em;
     margin-right: 1em;
-    background: #d0d6b5;
-    
-    
-    
-}
+ }
 
 form.js-search-form{
 	display: block;
@@ -68,29 +62,27 @@ form.js-search-form{
 
 div:not(:last-of-type)  {
 	list-style:none;
-	color: black;
-	font-size: 1.2em;
-    border-bottom: red solid 3px;
+    border-bottom: white solid 3px;
+}
+
+p.developerName {
+	font-size: 55%;
 }
 
 form.js-search-form input {
-	background: black;
-	color: cyan;
+	background: #F0E7D8;
+	color: black;
 	letter-spacing: .13em;
 	text-indent: 1em;
     font-size: 1.13em;
-    width: 80%;
-    height: 10%;
+    width: 75%;
     border-radius: 3em;
+    text-align:center;
 }
 
 form.js-search-form input, button {
 	font-family: 'Metal Gear Solid 2', sans-serif;
-	padding: 3%;
 	margin: 0px;
-	
-	border-top-left-radius: 1.8em;
-	border-bottom-right-radius: 1.8em;
 }
 
 .primeTitle, .title {
@@ -109,6 +101,9 @@ img {
 	font-size: 1.3em;
 }
 
+ul.game, li{
+	list-style: none;
+}
 
 
 .sought {
@@ -120,44 +115,24 @@ img {
 .otros {
 	display: block;
 	text-align: center;
-	text-decoration: underline;
-	padding: 0 .5em;
+	border-top: solid white;
+	padding: 0 2vw;
 }
 
 /*For larger screens*/
 /*zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
-@media only screen and (min-width: 460px) {
-	body{
-		color: black;
-        background: #d0d6b5;
-        border: solid 2px #df2935;
-	}
-    
-    
-    
-    main, li{
-        color: #1178af;
-    }
-    
+@media only screen and (min-width: 1000px) {
+	       
     .messengerBoy{
-        font-size: 1.9em;
+        font-size: 1.5vw;
     }
     
 	ul  {
 	list-style: none;
-	color: black;
-	background: rgba(0,0,0,0);
     
     }
-    .image{
-        height: auto;
-     
-        
-        width: auto;
-        
-        
-    }
+    
     .otros{
   padding-top: 3em;
     }
@@ -171,14 +146,12 @@ header span {
 	
 ul {
 		
-		/*margin-bottom: 2em;
-		float: right;
-		clear: right;*/
+		margin:auto 30%;
+		margin-top: 2vw;
 		position: relative;
-				/*border: black 1px solid;*/
 		padding-top:em;
-		height: 40.5%;
-	}
+/*		height: 40.5%;
+*/	}
 
 /*section.games{
 background: rgba(0,0,0,0.6);
@@ -197,19 +170,23 @@ background: rgba(0,0,0,0.6);
     
     .console{
         text-align:justify;
-        float: left;
         
+    }
+
+    p.developerName {
+    	font-size: 1vw;
     }
     
     .consoleList{
-/*        border: blue solid 4px;*/
-        padding: 0;
-        list-style: square;
-        left: 1em;
-        width: auto;
-        text-align: left;
-        box-sizing: content-box;
-        font-size: .5em;
+    /* border: blue solid 4px; */
+    padding: 0;
+    list-style: square;
+    /* left: 1em; */
+    width: 100%;
+    text-align: left;
+    box-sizing: content-box;
+    margin-top: 0;
+    margin-left: 0;
     }
     
     .soughtGame{
@@ -225,7 +202,7 @@ background: rgba(0,0,0,0.6);
         height: auto;
         font-size: .7em;
         display: block;
-        left: 1em;
+        margin-left:0;
     }
 
     .title,.year{
@@ -238,22 +215,17 @@ background: rgba(0,0,0,0.6);
     .console{
         
         font-size: 2.2em;
-        display: inline-block;
-        position: relative;
+        
     }
 	
 
 	.soughtConsole {
 		font-size: 3em;
 		box-sizing: border-box;
-        float: left;
         
 	}
 
-	.sought {
-		font-size: 3em;
-		font-weight: 4px;
-	}
+	
 
 	.otros {
 		position: relative;
@@ -263,23 +235,24 @@ background: rgba(0,0,0,0.6);
         padding: 0;
 	}
 
-	img {
-		position: relative;
-/*
-		height: 45%;
-		width: 30%;
-*/
-		float: left;
-		clear: left;
-		padding: 1em;
-		margin-bottom: 4em;
+	img.image {
+	    position: absolute;
+    /* float: left; */
+    /* clear: left; */
+    /* padding: 1em; */
+    /* margin-bottom: 4em; */
+    right: 96%;
+    max-width: unset;
+    max-height: unset;
+    max-height: unset;
+    max-width: 17vw;
+    max-height: 22vw;
 	}
 
 	form.js-search-form input {
 		height: 2.5em;
 		padding: 2px;
 		font-size: 2.4em;
-		color: cyan;
         text-indent: 1em;
         width: 70%;
 	}
@@ -288,5 +261,22 @@ background: rgba(0,0,0,0.6);
 		font-size: 2em;
 	}
 
+	img#soughtImage {
+		    width: 25vw;
+    max-width: unset;
+    max-height: unset;
+    float: left;
+    clear: left;
+    padding: 1em;
+	}
+
+	div:not(:last-of-type) {
+		height: auto;
+	}
+
+	ul.game, li {
+		list-style: none;
+		padding:1vw;
+	}
 
 }/*end of media query!*/

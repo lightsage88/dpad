@@ -122,11 +122,11 @@ function getDetails(data) {
 		$('.soughtGame').append(`
 		<h2 class='sought'>You searched for<br><strong>${title}</strong>!</h2>
 			<h4 class='specificityMessage'>Not what you meant? Try being more specific next time.</h4>
-			<img class='image' src='${image}'>
+			<img id='soughtImage' src='${image}'>
 			<ul class='game'>
 				<li class='primeTitle'>${title}</li>
 				<li class='year'>Year: ${year}</li>
-				<li class='developer'>Developer: ${developer}</li>
+				<li class='developer'>Developer:<br><p class='developerName'>${developer}</p></li>
 				<li class='soughtConsole'>Available on:
             <ul class='platformList'>
             </ul>
@@ -236,9 +236,8 @@ for(let z =0; z<=array.length; z++){
 <li class='picPic'><img class='image' src= ${image}></li>
         <li class='title'>${title}</li>
         <li class='year'>Released: ${year}</li>
-        <li class='developer'>Developer: ${developer}</li>
-        <li class='console'>Available on:
-                <ul class='consoleList magico${z}'>
+        <li class='developer'>Developer:<br><p class='developerName'>${developer}</p></li>
+        <li class='console'>Available on:<ul class='consoleList magico${z}'>
                 </ul>
     </ul><!--otherGame-->
 </div>
