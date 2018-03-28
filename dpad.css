@@ -74,7 +74,7 @@ form.js-search-form input {
 	color: black;
 	letter-spacing: .13em;
 	text-indent: 1em;
-    font-size: 1.13em;
+    font-size: 90%;
     width: 75%;
     border-radius: 3em;
     text-align:center;
@@ -83,6 +83,15 @@ form.js-search-form input {
 form.js-search-form input, button {
 	font-family: 'Metal Gear Solid 2', sans-serif;
 	margin: 0px;
+}
+
+button {
+    padding: 1vw;
+}
+
+button:hover {
+    background: red;
+    color: white;
 }
 
 .primeTitle, .title {
@@ -259,6 +268,7 @@ background: rgba(0,0,0,0.6);
 
 	form.js-search-form button {
 		font-size: 2em;
+        padding:1vw;
 	}
 
 	img#soughtImage {
