@@ -349,22 +349,24 @@ background: rgba(0,0,0,0.6);
     .specificityMessage {
         font-size: 1.4em;
 position: absolute;
-right: 0;
-width: auto;
+/*right: 0;
+*/width: auto;
 max-width: 29%;
-top: 95vh;
+top: 128%;
+text-align: center;
+float:left;
     }
     .sought {
         display: block;
-padding: 0 .3em;
-text-align: center;
-position: absolute;
-right: 0;
-width: auto;
-float: right;
-clear: both;
-margin: auto;
-max-width: 29%;
-top: 73vh;
+    padding: 0 .3em;
+    text-align: center;
+    position: absolute;
+    /* right: 0; */
+    width: auto;
+    float: right;
+    clear: both;
+    margin: auto;
+    max-width: 29%;
+    top: 120%;
     }
 }/*end of media query!*/
