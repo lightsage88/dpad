@@ -145,12 +145,12 @@ function getDetails(data) {
 						gameConsole.push(' '+ soughtGame[0].platforms[i].name);
 				}
 		$('.soughtGame').append(`
-		<h2 class='sought'>You searched for<br><strong>${title}</strong>!</h2>
+		<h2 class='sought'>You searched for:<br><strong>${title}</strong></h2>
 			<h4 class='specificityMessage'>Not what you meant? Try being more specific next time.</h4>
 			<img id='soughtImage' src='${image}'>
-			<ul class='game'>
+			<ul class='game' id='soughtGameInfoBox'>
 				<li class='primeTitle'>${title}</li>
-				<li class='year'>Year: ${year}</li>
+				<li class='year'>Year: <p class='primeYear'>${year}</p></li>
 				<li class='developer'>Developer:<br><p class='developerName'>${developer}</p></li>
 				<li class='soughtConsole'>Available on:
             <ul class='platformList'>
@@ -163,6 +163,9 @@ function getDetails(data) {
     });
 		$('form').find('h4.messengerBoy').remove();
 	researchQueryGames(data);
+		
+		
+
 }
 
 

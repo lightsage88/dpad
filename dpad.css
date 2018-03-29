@@ -59,11 +59,11 @@ header span {
 }
 
 p.descriptor{
-    font-family: monospace;
     text-align: center;
     font-size: 1.35em;
     margin-left: 1em;
     margin-right: 1em;
+    border:solid #6cc551;
  }
 
 form.js-search-form{
@@ -81,14 +81,21 @@ p.developerName {
 }
 
 form.js-search-form input {
-	background: #F0E7D8;
-	color: black;
-	letter-spacing: .13em;
-	text-indent: 1em;
+	background: #220C10;
+    color: #75b8c8;
+
+    letter-spacing: .13em;
+
+
+    border: solid #75b8c8;
+    text-indent: 1em;
     font-size: 90%;
+
     width: 75%;
-    border-radius: 3em;
-    text-align:center;
+    padding:1vw;
+
+    text-align: center;
+
 }
 
 form.js-search-form input, button {
@@ -98,15 +105,32 @@ form.js-search-form input, button {
 
 button {
     padding: 1vw;
+    background: #220c10;
+    border:solid #6cc551;
+    color: #75b8c8;
 }
 
 button:hover {
-    background: red;
-    color: white;
+    background: #b80c09;
+    color: #220c10;
+    border-color: #e5d67c;
+}
+
+.sought strong {
+    color: #6cc551;
 }
 
 .primeTitle, .title {
 	font-size: 1.5em;
+    color: #6cc551;
+}
+
+.primeYear, .developerName, .platformList li, .consoleList li {
+    color: #6cc551;
+}
+
+.consoleList li, .platformList li {
+    list-style: inherit;
 }
 
 img {
@@ -285,16 +309,17 @@ background: rgba(0,0,0,0.6);
 	}
 
 	form.js-search-form input {
-		height: 2.5em;
-		padding: 2px;
+		height: auto;
+		padding: 2vw;
 		font-size: 2.4em;
         text-indent: 1em;
         width: 70%;
 	}
 
 	form.js-search-form button {
-		font-size: 2em;
-        padding:1vw;
+		font-size: 2.4em;
+        padding:2vw;
+        height: auto;
 	}
 
 	img#soughtImage {
@@ -319,5 +344,27 @@ background: rgba(0,0,0,0.6);
 	}
     .otherGame{
         margin-bottom: 3%;
+    }
+
+    .specificityMessage {
+        font-size: 1.4em;
+position: absolute;
+right: 0;
+width: auto;
+max-width: 29%;
+top: 80%;
+    }
+    .sought {
+        display: block;
+padding: 0 .3em;
+text-align: center;
+position: absolute;
+right: 0;
+width: auto;
+float: right;
+clear: both;
+margin: auto;
+max-width: 29%;
+top: 60%;
     }
 }/*end of media query!*/
