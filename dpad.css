@@ -1,3 +1,14 @@
+@keyframes soughtGameDropsDown {
+    0% {top:-150vh;}
+    100%{top:0vh;}
+}
+
+@keyframes ulGameDK {
+    0%{left:200vh;}
+    100%{left:0vh;}
+
+}
+
 /*DPAD CSS*/
 
 .specificityMessage{
@@ -141,7 +152,7 @@ ul.game, li{
 /*zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
 @media only screen and (min-width: 1000px) {
-	       
+	   
     .messengerBoy{
         font-size: 1.5vw;
     }
@@ -149,6 +160,12 @@ ul.game, li{
 	ul  {
 	list-style: none;
     
+    }
+
+    ul.game {
+        position: relative;
+        animation-name: ulGameDK;
+        animation-duration: 2.5s;
     }
     
     .otros{
@@ -287,6 +304,9 @@ background: rgba(0,0,0,0.6);
     float: left;
     clear: left;
     padding: 1em;
+    position: relative;
+    animation-name: soughtGameDropsDown;
+    animation-duration: 2.5s;
 	}
 
 	div:not(:last-of-type) {
