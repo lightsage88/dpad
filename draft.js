@@ -170,8 +170,9 @@ function getDetails(data) {
 			// window.scrollTo(0,400);
 			let y = window.innerHeight;
 			let x = window.innerWidth;
-			if(x > 750) {
-			$('html, body').animate({scrollTop: y/2},1000);
+			if(x >= 751) {
+				console.log('slippy');
+			$('html, body').animate({scrollTop: y/2.5},1000);
 			// } else {
 			// 	$('html, body').animate({scrollTop: y/2}, 200);
 			// 	setTimeout(()=>{
