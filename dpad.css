@@ -60,10 +60,10 @@ form.js-search-form{
 	text-align: center;
 }
 
-div:not(:last-of-type)  {
+/*div:not(:last-of-type)  {
 	list-style:none;
     border-bottom: white solid 3px;
-}
+}*/
 
 p.developerName {
 	font-size: 65%;
@@ -110,6 +110,10 @@ img {
 	font-size: 1.3em;
 }
 
+ul.game {
+    border: solid;
+}
+
 ul.game, li{
 	list-style: none;
 }
@@ -124,8 +128,13 @@ ul.game, li{
 .otros {
 	display: block;
 	text-align: center;
-	border-top: solid white;
-	padding: 0 2vw;
+/*	border-top: solid white;
+*/	padding: 0 2vw;
+}
+
+.otherGame {
+    border:solid;
+    padding:1vw;
 }
 
 /*For larger screens*/
@@ -250,7 +259,7 @@ background: rgba(0,0,0,0.6);
     /* clear: left; */
     /* padding: 1em; */
     /* margin-bottom: 4em; */
-    right: 96%;
+    right: 40vw;
     max-width: unset;
     max-height: unset;
     max-height: unset;
@@ -288,5 +297,7 @@ background: rgba(0,0,0,0.6);
 		list-style: none;
 		padding:1vw;
 	}
-
+    .otherGame{
+        margin-bottom: 3%;
+    }
 }/*end of media query!*/

@@ -259,10 +259,12 @@ for(let z =0; z<=array.length; z++){
     <div class='cosa'>
     <ul class='otherGame'>
 <li class='picPic'><img class='image' src= ${image}></li>
+        <section class='detailsBox'>
         <li class='title'>${title}</li>
         <li class='year'>Released: ${year}</li>
         <li class='developer'>Developer:<br><p class='developerName'>${developer}</p></li>
         <li class='console'>Available on:<ul class='consoleList magico${z}'>
+        </section>
                 </ul>
     </ul><!--otherGame-->
 </div>
