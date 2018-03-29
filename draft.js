@@ -157,13 +157,29 @@ function getDetails(data) {
             </ul>
                 </li>
 			</ul>`);
+
     gameConsole.forEach(function(item){
         $('ul.platformList').append(`<li>${item}</li>`);
        
     });
 		$('form').find('h4.messengerBoy').remove();
 	researchQueryGames(data);
-		
+
+		if('#soughtGame') {
+			console.log('crip style');
+			// window.scrollTo(0,400);
+			let y = window.innerHeight;
+			let x = window.innerWidth;
+			if(x > 750) {
+			$('html, body').animate({scrollTop: y/2},1000);
+			// } else {
+			// 	$('html, body').animate({scrollTop: y/2}, 200);
+			// 	setTimeout(()=>{
+			// 	$('html, body').animate({scrollTop:y/2}, 1000);
+
+			// 	}, 2000);
+			}
+		}
 		
 
 }

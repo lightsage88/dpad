@@ -175,7 +175,7 @@ ul.game, li{
 /*For larger screens*/
 /*zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 750px) {
 	   
     .messengerBoy{
         font-size: 1.5vw;
@@ -311,7 +311,7 @@ background: rgba(0,0,0,0.6);
 	form.js-search-form input {
 		height: auto;
 		padding: 2vw;
-		font-size: 2.4em;
+		font-size: 2em;
         text-indent: 1em;
         width: 70%;
 	}
@@ -352,7 +352,7 @@ position: absolute;
 right: 0;
 width: auto;
 max-width: 29%;
-top: 80%;
+top: 95vh;
     }
     .sought {
         display: block;
@@ -365,6 +365,6 @@ float: right;
 clear: both;
 margin: auto;
 max-width: 29%;
-top: 60%;
+top: 73vh;
     }
 }/*end of media query!*/
