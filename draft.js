@@ -176,7 +176,7 @@ function getDetails(data) {
 			console.log(x);
 			if(x >= 1495) {
 				console.log('slippy');
-			$('html, body').animate({scrollTop: y/3},1000);
+			$('html, body').animate({scrollTop: y/2}, 1000);
 			
 			} else {
 				console.log('ex-gf');
