@@ -172,7 +172,9 @@ function getDetails(data) {
 			// window.scrollTo(0,400);
 			let y = window.innerHeight;
 			let x = window.innerWidth;
-			if(x >= 751) {
+			console.log(y);
+			console.log(x);
+			if(x > 1954) {
 				console.log('slippy');
 			$('html, body').animate({scrollTop: y/2.5},1000);
 			// } else {
@@ -181,6 +183,8 @@ function getDetails(data) {
 			// 	$('html, body').animate({scrollTop:y/2}, 1000);
 
 			// 	}, 2000);
+			} else {
+				console.log('ex-gf');
 			}
 		}
 		
