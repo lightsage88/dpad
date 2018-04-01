@@ -145,8 +145,10 @@ function getDetails(data) {
 						gameConsole.push(' '+ soughtGame[0].platforms[i].name);
 				}
 		$('.soughtGame').append(`
-		<h2 class='sought'>You searched for:<br><strong>${title}</strong></h2>
+		<div class='message'>
+			<h2 class='sought'>You searched for:<br><strong>${title}</strong></h2>
 			<h4 class='specificityMessage'>Not what you meant? Try being more specific next time.</h4>
+		</div>
 			<img id='soughtImage' src='${image}'>
 			<ul class='game' id='soughtGameInfoBox'>
 				<li class='primeTitle'>${title}</li>
