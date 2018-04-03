@@ -373,8 +373,8 @@ clear:right;
 /*    position: absolute;
 */    /* right: 0; */
     width: auto;
-    float: right;
-    clear: both;
+/*    float: right;
+*/    clear: both;
     margin: auto;
     max-width: 29%;
     top: 120%;
