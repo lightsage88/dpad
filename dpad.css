@@ -40,14 +40,14 @@ h4 {
 
 
 body{	
-	background:#220C10;
+	background:#010101;
 
 }
 
 header h1 {
 	text-align: center;
 	font-size: 4em;
-	margin-top: .2em;
+	margin-top: 1.2em;
 	margin-bottom: 0px;
 }
 
@@ -63,7 +63,19 @@ p.descriptor{
     font-size: 1.35em;
     margin-left: 1em;
     margin-right: 1em;
-    border:solid #6cc551;
+    border:solid #598d67 .05em;
+    padding: 2vw;
+ }
+
+ .descriptor small {
+display: block;
+border: solid #598d67 .05em;
+margin: 2vw;
+padding: 1.5vw;;
+ }
+
+ .descriptor span {
+    color: #b80c09;
  }
 
 form.js-search-form{
@@ -81,13 +93,13 @@ p.developerName {
 }
 
 form.js-search-form input {
-	background: #220C10;
+	background: #010101;
     color: #75b8c8;
 
     letter-spacing: .13em;
 
 
-    border: solid #75b8c8;
+    border: solid #75b8c8 .005em;
     text-indent: 1em;
     font-size: 90%;
 
@@ -105,28 +117,28 @@ form.js-search-form input, button {
 
 button {
     padding: 1vw;
-    background: #220c10;
-    border:solid #6cc551;
+    background: #010101;
+    border:solid #598d67 .005em;
     color: #75b8c8;
 }
 
 button:hover {
     background: #b80c09;
-    color: #220c10;
+    color: #010101;
     border-color: #e5d67c;
 }
 
 .sought strong {
-    color: #6cc551;
+    color: #598d67;
 }
 
 .primeTitle, .title {
 	font-size: 1.5em;
-    color: #6cc551;
+    color: #598d67;
 }
 
 .primeYear, .developerName, .platformList li, .consoleList li {
-    color: #6cc551;
+    color: #598d67;
 }
 
 .primeYear {
@@ -155,7 +167,7 @@ img {
 }
 
 ul.game {
-    border: solid;
+    border: solid .05em;
 }
 
 ul.game, li{
@@ -177,7 +189,7 @@ ul.game, li{
 }
 
 .otherGame {
-    border:solid;
+    border:solid .05em;
     padding:1vw;
 }
 
@@ -378,5 +390,9 @@ clear:right;
     margin: auto;
     max-width: 29%;
     top: 120%;
+    }
+    .sought:not(strong) {
+        color: white;
+        font-size:3vw;
     }
 }/*end of media query!*/

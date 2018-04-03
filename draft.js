@@ -146,7 +146,7 @@ function getDetails(data) {
 				}
 		$('.soughtGame').append(`
 		<div class='message'>
-			<h2 class='sought'>You searched for:<br><strong>${title}</strong></h2>
+			<h2 class='sought'>You searched for:<br></h2>
 			<h4 class='specificityMessage'>Not what you meant? Try being more specific next time.</h4>
 		</div>
 			<img id='soughtImage' src='${image}'>
@@ -176,7 +176,7 @@ function getDetails(data) {
 			console.log(x);
 			if(x >= 1495) {
 				console.log('slippy');
-			$('html, body').animate({scrollTop: y/2}, 1000);
+			$('html, body').animate({scrollTop: y-(y/10)}, 1000);
 			
 			} else {
 				console.log('ex-gf');
